@@ -72,13 +72,15 @@ Document Content:
 
 Category: {category}
 
-Please extract and summarize all relevant information about '{category}' from the document above. 
-Focus on:
-- Navigation Guidance: locations, addresses, directions, how to find/visit
-- Service Explanation: services offered, what they do, capabilities, offerings
-- Status Inquiries: how to check status, order tracking, request updates, processing times
+Please extract ONLY information about '{category}' from the document above. 
+Do NOT include information about other categories.
 
-Return a clear, concise summary of information related to this category. If no relevant information is found, say so.";
+Focus specifically on:
+- If category is 'Navigation Guidance': ONLY locations, addresses, directions, how to find/visit, office hours
+- If category is 'Service Explanation': ONLY services offered, what they do, capabilities, offerings
+- If category is 'Status Inquiries': ONLY how to check status, order tracking, request updates, processing times
+
+Return ONLY a clear, concise summary of information related to '{category}'. Do not mention other categories.";
 
             var response = await _openAIService.GetChatResponseAsync(prompt, null);
             return response;
