@@ -1,0 +1,63 @@
+{
+  "navigation": [
+    {
+      "keywords": ["where", "location", "find", "directions", "how to get", "navigate", "address", "office", "visit"],
+      "responses": [
+        "You can find us at 123 Main Street, Downtown District. We're open Monday to Friday, 9 AM to 5 PM, and Saturday 10 AM to 2 PM.",
+        "Our office is located in the downtown area at 123 Main Street. You can reach us by taking the metro to Central Station, then it's a 5-minute walk.",
+        "For directions to our office, please visit our website or call us at +1-234-567-8900. We're located at 123 Main Street.",
+        "We're situated at 123 Main Street in the heart of downtown. Parking is available in the adjacent parking garage.",
+        "Our location is 123 Main Street. We're easily accessible by public transport - the nearest metro station is Central Station."
+      ]
+    }
+  ],
+  "services": [
+    {
+      "keywords": ["service", "what do you", "offer", "provide", "help with", "can you", "what services", "capabilities", "do you do"],
+      "responses": [
+        "We offer a wide range of services including business consulting, technology solutions, software development, and customer support. How can I assist you today?",
+        "Our services include business consulting, technology solutions, digital transformation, and ongoing support. What specific area interests you?",
+        "We provide comprehensive solutions for your business needs including strategy consulting, custom software development, and IT support. Would you like to know more about a specific service?",
+        "Our main services are: Business Consulting, Technology Solutions, Software Development, and Customer Support. Which one would you like to learn more about?",
+        "We specialize in helping businesses transform through technology. Our services cover consulting, development, implementation, and support. What challenges are you facing?"
+      ]
+    },
+    {
+      "keywords": ["consulting", "consultant", "advice", "strategy"],
+      "responses": [
+        "Our consulting services help businesses identify opportunities, develop strategies, and implement solutions. We work with companies of all sizes.",
+        "We provide strategic consulting to help you make informed decisions about technology, processes, and business growth.",
+        "Our consulting team specializes in digital transformation, process optimization, and strategic planning. Would you like to schedule a consultation?"
+      ]
+    },
+    {
+      "keywords": ["development", "software", "app", "website", "build", "create"],
+      "responses": [
+        "We develop custom software solutions, web applications, and mobile apps tailored to your business needs.",
+        "Our development team creates scalable, modern applications using the latest technologies. We handle everything from design to deployment.",
+        "We build custom software solutions including web apps, mobile apps, and enterprise systems. What type of application do you need?"
+      ]
+    }
+  ],
+  "status": [
+    {
+      "keywords": ["status", "check", "order", "request", "track", "update", "when", "progress", "where is"],
+      "responses": [
+        "Your request is currently being processed. Expected completion: within 2-3 business days. You'll receive an email notification when it's ready.",
+        "I've checked your status - everything is on track. Your request is in progress and should be completed within the next 2-3 business days.",
+        "Status: In Progress. Our team is working on your request and will notify you via email upon completion. Expected timeline: 2-3 business days.",
+        "Your request status is 'Active' and is being handled by our team. We'll send you an update as soon as there's progress.",
+        "I can see your request is currently being processed. The estimated completion time is 2-3 business days. You'll receive an email with updates."
+      ]
+    },
+    {
+      "keywords": ["when", "how long", "time", "duration", "deadline"],
+      "responses": [
+        "Most requests are completed within 2-3 business days. For urgent matters, please contact our support team directly.",
+        "The typical processing time is 2-3 business days. Complex requests may take longer, and we'll keep you informed of any delays.",
+        "Standard processing time is 2-3 business days. If you need expedited service, please reach out to our team."
+      ]
+    }
+  ]
+}
+
