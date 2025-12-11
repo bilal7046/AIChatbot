@@ -9,8 +9,8 @@ builder.Services.AddRazorComponents()
 
 // Register chatbot services
 builder.Services.AddHttpClient<OpenAIService>();
+builder.Services.AddHttpClient<DocumentService>();
 builder.Services.AddSingleton<KnowledgeBaseService>();
-builder.Services.AddSingleton<DocumentService>();
 builder.Services.AddScoped<ChatService>();
 
 var app = builder.Build();

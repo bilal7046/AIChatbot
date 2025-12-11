@@ -485,6 +485,97 @@
             flex-shrink: 0;
         }
 
+    .jmm-url-input-section {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .jmm-url-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .jmm-url-input-wrapper {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .jmm-url-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s;
+        background: white;
+    }
+
+        .jmm-url-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+    .jmm-load-url-button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        flex-shrink: 0;
+    }
+
+        .jmm-load-url-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .jmm-load-url-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+    .jmm-url-loaded {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 8px;
+        font-size: 12px;
+        color: #667eea;
+        font-weight: 500;
+    }
+
+        .jmm-url-loaded svg {
+            flex-shrink: 0;
+        }
+
+    .jmm-spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @@keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
     .jmm-typing-indicator {
         display: flex;
         gap: 4px;
@@ -595,6 +686,43 @@
                         </svg>
                         <span>Status Inquiries</span>
                     </button>
+                    
+                    <div class="jmm-url-input-section">
+                        <div class="jmm-url-label">Or ask questions about a website:</div>
+                        <div class="jmm-url-input-wrapper">
+                            <input type="text" 
+                                   @bind="websiteUrl" 
+                                   @bind:event="oninput"
+                                   @onkeypress="HandleUrlKeyPress"
+                                   class="jmm-url-input" 
+                                   placeholder="Enter website URL (e.g., example.com)"
+                                   autocomplete="off" />
+                            <button class="jmm-load-url-button" @onclick="LoadWebsite" style="background: @PrimaryColor" disabled="@IsLoadingUrl">
+                                @if (IsLoadingUrl)
+                                {
+                                    <div class="jmm-spinner"></div>
+                                }
+                                else
+                                {
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+                                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                                        <line x1="21" y1="3" x2="17" y2="3"></line>
+                                        <line x1="21" y1="3" x2="21" y2="7"></line>
+                                    </svg>
+                                }
+                            </button>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(DocumentService.GetSourceUrl()))
+                        {
+                            <div class="jmm-url-loaded">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Loaded: @DocumentService.GetSourceUrl()</span>
+                            </div>
+                        }
+                    </div>
                 </div>
             }
             else
@@ -686,9 +814,11 @@
     private bool IsOpen { get; set; } = false;
     private bool IsListening { get; set; } = false;
     private bool IsLoading { get; set; } = false;
+    private bool IsLoadingUrl { get; set; } = false;
     private bool CategorySelected { get; set; } = false;
     private string? SelectedCategory { get; set; }
     private string inputText = string.Empty;
+    private string websiteUrl = string.Empty;
     private List<AIChatbot.Services.ChatMessage> Messages { get; set; } = new();
     private ElementReference messagesContainer;
     private IJSObjectReference? speechModule;
@@ -769,6 +899,7 @@
             "Navigation Guidance" => "Hi! I'm here to help you find us! 🗺️\n\nI can help you with directions, our location, office hours, and how to get here. What would you like to know?",
             "Service Explanation" => "Hello! I'd love to tell you about our services! 💼\n\nI can explain what we offer, our capabilities, and how we can help your business. What interests you?",
             "Status Inquiries" => "Hey there! I can help you check on your request! 📊\n\nI can tell you how to track your order, check status updates, and find out processing times. What do you need?",
+            "Website Content" => "Hi! I've loaded the website content! 🌐\n\nI can answer questions about the website you provided. What would you like to know?",
             _ => $"I'm ready to help you with {category}! What would you like to know?"
         };
 
@@ -782,6 +913,57 @@
         if (e.Key == "Enter" && !IsLoading)
         {
             await SendMessage();
+        }
+    }
+
+    private async Task HandleUrlKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter" && !IsLoadingUrl)
+        {
+            await LoadWebsite();
+        }
+    }
+
+    private async Task LoadWebsite()
+    {
+        if (string.IsNullOrWhiteSpace(websiteUrl) || IsLoadingUrl)
+            return;
+
+        IsLoadingUrl = true;
+        StateHasChanged();
+
+        try
+        {
+            var success = await DocumentService.LoadDocumentFromUrlAsync(websiteUrl.Trim());
+            
+            if (success)
+            {
+                var sourceUrl = DocumentService.GetSourceUrl();
+                Messages.Add(new AIChatbot.Services.ChatMessage 
+                { 
+                    IsUser = false, 
+                    Text = $"✅ Great! I've loaded the content from {sourceUrl}. You can now ask me questions about this website! What would you like to know?" 
+                });
+                
+                // Auto-select a category so user can start asking questions
+                SelectedCategory = "Website Content";
+                CategorySelected = true;
+                websiteUrl = string.Empty;
+            }
+        }
+        catch (Exception ex)
+        {
+            Messages.Add(new AIChatbot.Services.ChatMessage 
+            { 
+                IsUser = false, 
+                Text = $"❌ Sorry, I couldn't load the website. Error: {ex.Message}. Please check the URL and try again." 
+            });
+        }
+        finally
+        {
+            IsLoadingUrl = false;
+            StateHasChanged();
+            await ScrollToBottom();
         }
     }
 
