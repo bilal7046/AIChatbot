@@ -1,6 +1,22 @@
 {
   "navigation": [
     {
+      "keywords": ["renew driving license", "renew license", "driving license renewal", "license renewal", "renew my license", "how to renew driving license", "licence number", "license number", "driving license number", "licence"],
+      "responses": [
+        "To find your driving license number or renew your license in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Traffic Services' (المرور)\n- Select 'Driving License Services'\n- Here you can view your license details including your license number\n- To renew, choose 'License Renewal' from the available options\n- Follow the on-screen instructions to complete the process",
+        "Here's how to find your license number or navigate to license services:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Traffic Services' (المرور) in the main navigation menu\n- Click on it to open the Traffic Services section\n- Find and click on 'Driving License Services'\n- Your license number and details will be displayed here\n- You can also select 'License Renewal' if you need to renew",
+        "To find your driving license number:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Traffic Services' (المرور)\n- In the Traffic Services section, click 'Driving License Services'\n- Your license information including the license number will be shown here\n- You can also access renewal services from this section"
+      ]
+    },
+    {
+      "keywords": ["renew id", "renew national id", "id renewal", "renew my id", "how to renew id", "national id renewal", "where to renew id"],
+      "responses": [
+        "To renew your National ID in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Civil Affairs' (الأحوال المدنية)\n- Select 'ID Services' from the menu\n- Choose 'Renew ID' option\n- Complete the renewal form and submit your request",
+        "Here's how to navigate to ID renewal:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Civil Affairs' (الأحوال المدنية) in the main navigation menu\n- Click on it to open the Civil Affairs section\n- Find and click on 'ID Services'\n- Select 'Renew ID'\n- Follow the instructions to complete the renewal process",
+        "To find the ID renewal service:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Civil Affairs' (الأحوال المدنية)\n- In the Civil Affairs section, click 'ID Services'\n- Choose 'Renew ID' option\n- Fill out the required information and proceed with the renewal"
+      ]
+    },
+    {
       "keywords": ["where", "find", "navigate", "section", "service", "menu", "how to find", "where is", "location", "page"],
       "responses": [
         "To find a service in Absher, you can use the main menu at the top of the page. Services are organized by categories like Civil Affairs, Traffic, Labor, and more. You can also use the search bar to quickly find what you're looking for.",
@@ -19,11 +35,19 @@
       ]
     },
     {
-      "keywords": ["traffic", "مرور", "driving license", "vehicle", "car", "license", "driving"],
+      "keywords": ["traffic", "مرور", "vehicle", "car", "driving"],
       "responses": [
         "Traffic services (المرور) in Absher include: driving license services, vehicle registration, traffic violations, license renewal, and vehicle ownership transfer. Find these under the 'Traffic Services' section.",
         "For traffic-related services, go to the 'Traffic Services' (المرور) section in Absher. Here you can manage your driving license, vehicle registration, check violations, and more.",
         "Traffic services are available in Absher under the 'Traffic Services' (المرور) menu. This includes all services related to vehicles and driving licenses."
+      ]
+    },
+    {
+      "keywords": ["licence number", "license number", "driving license number", "my license number", "where is my license number", "find license number"],
+      "responses": [
+        "To find your driving license number in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Traffic Services' (المرور)\n- Select 'Driving License Services'\n- Your license details including the license number will be displayed here",
+        "Here's how to find your license number:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Traffic Services' (المرور) in the main navigation menu\n- Click on it to open the Traffic Services section\n- Find and click on 'Driving License Services'\n- Your license number and all license information will be shown on this page",
+        "To view your driving license number:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Traffic Services' (المرور)\n- In the Traffic Services section, click 'Driving License Services'\n- Your complete license information including the license number will be displayed"
       ]
     },
     {

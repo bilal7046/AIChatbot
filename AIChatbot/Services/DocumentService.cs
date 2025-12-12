@@ -171,7 +171,13 @@ Use only plain text, no icons or symbols.";
                                       "Write in flowing sentences, but make sure each step is clear. Don't use numbered lists or bullet points - just explain naturally. " +
                                       "Keep it practical and actionable. Tell them exactly what they need to do, where to go, and what to expect. " +
                                       "Be thorough but keep it simple and easy to understand.",
-                "Navigation Guidance" => "Focus on: How to find things in Absher, where stuff is located. Keep it short and direct.",
+                "Navigation Guidance" => "SPECIFIC INSTRUCTIONS FOR NAVIGATION GUIDANCE: " +
+                                      "For navigation questions, provide clear step-by-step guidance on finding things in Absher. " +
+                                      "Use bullet points (use - for bullets) to list the steps clearly. " +
+                                      "Break down the navigation process into bulleted steps showing exactly where to go on the website. " +
+                                      "Tell them where to look, what menu to use, and how to get to the service they need. " +
+                                      "Format: Start with a brief explanation, then list the steps using bullets with - prefix. " +
+                                      "Example format: 'To find [service], follow these steps:\n- Step 1\n- Step 2\n- Step 3'",
                 "Status Inquiries" => "Focus on: How to check status, what different statuses mean, how long things take. Keep it short and direct.",
                 _ => "Keep it short and direct. No bullet points or numbered lists - just flowing sentences. Don't say 'I can help' or 'Let me explain' - just explain directly."
             };
@@ -237,7 +243,13 @@ Remember: Only plain text, no icons, symbols, or visual elements.";
                                       "Write in flowing sentences, but make sure each step is clear. Don't use numbered lists or bullet points - just explain naturally. " +
                                       "Keep it practical and actionable. Tell them exactly what they need to do, where to go, and what to expect. " +
                                       "Be thorough but keep it simple and easy to understand.",
-                "Navigation Guidance" => "For navigation: Give quick, practical tips on finding things in Absher. Tell them where to look and how to navigate.",
+                "Navigation Guidance" => "SPECIFIC INSTRUCTIONS FOR NAVIGATION GUIDANCE: " +
+                                      "For navigation questions, provide clear step-by-step guidance on finding things in Absher. " +
+                                      "Use bullet points (use - for bullets) to list the steps clearly. " +
+                                      "Break down the navigation process into bulleted steps showing exactly where to go on the website. " +
+                                      "Tell them where to look, what menu to use, and how to get to the service they need. " +
+                                      "Format: Start with a brief explanation, then list the steps using bullets with - prefix. " +
+                                      "Example format: 'To find [service], follow these steps:\n- Step 1\n- Step 2\n- Step 3'",
                 "Status Inquiries" => "For status: Explain how to check status naturally. The system handles ID number lookups automatically.",
                 _ => "Keep it short and direct. No bullet points - just flowing sentences. Don't say 'I can help' or 'Let me explain' - just answer directly."
             };

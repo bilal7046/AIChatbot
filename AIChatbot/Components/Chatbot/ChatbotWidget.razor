@@ -237,6 +237,7 @@
         line-height: 1.5;
         font-size: 15px;
         position: relative;
+        white-space: pre-line;
     }
 
     .jmm-message-user .jmm-message-content {
@@ -1149,14 +1150,14 @@
             @foreach (var message in Messages)
             {
                 <div class="jmm-message jmm-message-@(message.IsUser ? "user" : "bot")">
-                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "")">
+                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "") white-space: pre-line;">
                         @if (message.IsUser)
                         {
                             @message.Text
                         }
                         else
                         {
-                            @((MarkupString)message.Text)
+                            @message.Text
                         }
                     </div>
                 </div>

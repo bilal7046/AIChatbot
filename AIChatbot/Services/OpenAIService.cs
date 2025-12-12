@@ -67,8 +67,13 @@ public class OpenAIService
             }
             else if (userMessage.Contains("[Category: Navigation Guidance]", StringComparison.OrdinalIgnoreCase))
             {
-                systemMessage += "For navigation questions, give quick, practical guidance on finding things in Absher. " +
-                               "Tell them where to look, what menu to use, and how to get to the service they need.";
+                systemMessage += "SPECIFIC INSTRUCTIONS FOR NAVIGATION GUIDANCE: " +
+                               "For navigation questions, provide clear step-by-step guidance on finding things in Absher. " +
+                               "Use bullet points (use - for bullets) to list the steps clearly. " +
+                               "Break down the navigation process into bulleted steps showing exactly where to go on the website. " +
+                               "Tell them where to look, what menu to use, and how to get to the service they need. " +
+                               "Format: Start with a brief explanation, then list the steps using bullets with - prefix. " +
+                               "Example format: 'To find [service], follow these steps:\n- Step 1\n- Step 2\n- Step 3'";
             }
             else if (userMessage.Contains("[Category: Status Inquiries]", StringComparison.OrdinalIgnoreCase))
             {
