@@ -147,7 +147,7 @@ public class DocumentService
 
         try
         {
-            var prompt = $@"You're helping someone understand Absher services. Write like a real person explaining to a friend - natural, conversational, and friendly.
+            var basePrompt = $@"You're helping someone understand Absher services. Write like a real person explaining to a friend - natural, conversational, and friendly.
 
 Document Content:
 {_documentContent}
@@ -158,18 +158,25 @@ Extract information about '{category}' from the document and explain it naturall
 
 Write in plain, conversational language:
 - Use contractions and casual phrases
-- Keep it short and direct
-- No bullet points or numbered lists - just flowing sentences
-- Don't say 'I can help' or 'Let me explain' - just explain directly
 - Use simple words
 - IMPORTANT: Never use any icons, emojis, symbols, charts, graphs, or visual elements. Use only plain text.
 
-Focus on:
-- Navigation Guidance: How to find things in Absher, where stuff is located
-- Service Explanation: How services work, what you need to do, what documents you need
-- Status Inquiries: How to check status, what different statuses mean, how long things take
+Use only plain text, no icons or symbols.";
 
-Just give the info naturally without being too structured or formal. Use only plain text, no icons or symbols.";
+            var categorySpecificInstructions = category switch
+            {
+                "Service Explanation" => "SPECIFIC INSTRUCTIONS FOR SERVICE EXPLANATION: " +
+                                      "Provide clear, simple explanations of how specific Absher services work and what steps are required. " +
+                                      "Break down the process into easy-to-follow steps. Explain what documents are needed, what the user needs to do, and what happens next. " +
+                                      "Write in flowing sentences, but make sure each step is clear. Don't use numbered lists or bullet points - just explain naturally. " +
+                                      "Keep it practical and actionable. Tell them exactly what they need to do, where to go, and what to expect. " +
+                                      "Be thorough but keep it simple and easy to understand.",
+                "Navigation Guidance" => "Focus on: How to find things in Absher, where stuff is located. Keep it short and direct.",
+                "Status Inquiries" => "Focus on: How to check status, what different statuses mean, how long things take. Keep it short and direct.",
+                _ => "Keep it short and direct. No bullet points or numbered lists - just flowing sentences. Don't say 'I can help' or 'Let me explain' - just explain directly."
+            };
+
+            var prompt = basePrompt + "\n\n" + categorySpecificInstructions;
 
             var response = await _openAIService.GetChatResponseAsync(prompt, null);
             return response;
@@ -204,7 +211,7 @@ Just give the info naturally without being too structured or formal. Use only pl
                 ? $"Website URL: {_sourceUrl}\n" 
                 : "Document Content:\n";
 
-            var contextPrompt = $@"You're a friendly Absher support person helping someone. Write like a real human - natural, conversational, and helpful.
+            var basePrompt = $@"You're a friendly Absher support person helping someone. Write like a real human - natural, conversational, and helpful.
 
 {sourceInfo}
 {_documentContent}
@@ -214,20 +221,28 @@ Question: {question}
 
 Answer based on the content above. Write naturally:
 - Use contractions and casual language
-- Keep it short and direct
-- No bullet points - just flowing sentences
-- Don't say 'I can help' or 'Let me explain' - just answer directly
 - Use simple words, avoid jargon
 - Sound like you're texting a friend but still professional
 - IMPORTANT: Never use any icons, emojis, symbols, charts, graphs, or visual elements. Use only plain text. No Unicode symbols or special characters.
 
 If the info isn't in the content, just say you don't have that info. Don't over-explain.
 
-For navigation: Give quick, practical tips on finding things
-For services: Explain how things work in plain language
-For status: Explain how to check status naturally
-
 Remember: Only plain text, no icons, symbols, or visual elements.";
+
+            var categorySpecificInstructions = category switch
+            {
+                "Service Explanation" => "SPECIFIC INSTRUCTIONS FOR SERVICE EXPLANATION: " +
+                                      "Provide clear, simple explanations of how specific Absher services work and what steps are required. " +
+                                      "Break down the process into easy-to-follow steps. Explain what documents are needed, what the user needs to do, and what happens next. " +
+                                      "Write in flowing sentences, but make sure each step is clear. Don't use numbered lists or bullet points - just explain naturally. " +
+                                      "Keep it practical and actionable. Tell them exactly what they need to do, where to go, and what to expect. " +
+                                      "Be thorough but keep it simple and easy to understand.",
+                "Navigation Guidance" => "For navigation: Give quick, practical tips on finding things in Absher. Tell them where to look and how to navigate.",
+                "Status Inquiries" => "For status: Explain how to check status naturally. The system handles ID number lookups automatically.",
+                _ => "Keep it short and direct. No bullet points - just flowing sentences. Don't say 'I can help' or 'Let me explain' - just answer directly."
+            };
+
+            var contextPrompt = basePrompt + "\n\n" + categorySpecificInstructions;
 
             var response = await _openAIService.GetChatResponseAsync(contextPrompt, conversationHistory);
             return response;

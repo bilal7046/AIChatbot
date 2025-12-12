@@ -81,8 +81,8 @@ public class ChatService
             }
         }
 
-        // Fallback to knowledge base
-        return _knowledgeBaseService.ProcessMessage(message);
+        // Fallback to knowledge base - pass category to prioritize correct responses
+        return _knowledgeBaseService.ProcessMessage(message, category);
     }
 
     public async Task<string> GetCategoryInformationAsync(string category)

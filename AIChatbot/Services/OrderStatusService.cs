@@ -110,42 +110,30 @@ public class OrderStatusService
     {
         if (status == null)
         {
-            return $"Sorry, I couldn't find any applications for ID number '{idNumber}' in the system. " +
-                   "Please double-check your ID number and try again. " +
-                   "Make sure you're entering your 10-digit Saudi National ID number. " +
-                   "If you don't have any active applications, that's why nothing was found.";
+            return $"No applications found for ID {idNumber}. Please check your ID number or you may not have any active applications.";
         }
 
         var statusMessage = status.Status switch
         {
-            "Submitted" => "We got your request and it's in the queue now.",
-            "Under Review" => "Your application's being looked at by our team right now.",
-            "Approved" => "Great news! Your request was approved. You might need to do a few more things like pay fees or pick up documents.",
-            "Rejected" => $"Unfortunately, your request was rejected. {status.Notes ?? "Check your Absher account for more details on why."}",
-            "Completed" => "All done! Your request is complete and ready for pickup or delivery.",
-            "Pending" => "Your request is waiting for some info or documents from you. Check your Absher account to see what's needed.",
-            _ => $"Your request status is: {status.Status}"
+            "Submitted" => "Your request is in the queue.",
+            "Under Review" => "Your application is being reviewed.",
+            "Approved" => "Approved. You may need to pay fees or pick up documents.",
+            "Rejected" => $"Rejected. {status.Notes ?? "Check your Absher account for details."}",
+            "Completed" => "Completed and ready for pickup.",
+            "Pending" => "Waiting for documents or information from you. Check your Absher account.",
+            _ => $"Status: {status.Status}"
         };
 
-        var response = $"I found an application for ID {idNumber}. It's currently {status.Status.ToLower()}.\n\n" +
-                      $"{statusMessage}";
-
-        if (!string.IsNullOrWhiteSpace(status.SubmittedDate))
-        {
-            response += $"\n\nYou submitted it on {status.SubmittedDate}.";
-        }
-
-        if (!string.IsNullOrWhiteSpace(status.LastUpdated))
-        {
-            response += $" Last update was {status.LastUpdated}.";
-        }
+        var serviceInfo = !string.IsNullOrWhiteSpace(status.ServiceName) 
+            ? $"{status.ServiceName} - " 
+            : "";
+        
+        var response = $"ID {idNumber}: {serviceInfo}{status.Status}.\n{statusMessage}";
 
         if (!string.IsNullOrWhiteSpace(status.Notes) && status.Status != "Rejected")
         {
-            response += $"\n\n{status.Notes}";
+            response += $" {status.Notes}";
         }
-
-        response += "\n\nYou can also check this anytime by logging into Absher and going to 'My Services'.";
 
         return response;
     }
@@ -162,6 +150,7 @@ public class OrderStatusService
                 {
                     OrderNumber = "1234567890",
                     Status = "Under Review",
+                    ServiceName = "ID Renewal",
                     SubmittedDate = "2024-01-15",
                     LastUpdated = "2024-01-18",
                     Notes = "Your ID renewal application is being processed. Expected completion: 2-3 business days."
@@ -173,6 +162,7 @@ public class OrderStatusService
                 {
                     OrderNumber = "9876543210",
                     Status = "Approved",
+                    ServiceName = "Passport Application",
                     SubmittedDate = "2024-01-10",
                     LastUpdated = "2024-01-16",
                     Notes = "Your passport application has been approved. Please schedule an appointment for biometrics."
@@ -184,17 +174,19 @@ public class OrderStatusService
                 {
                     OrderNumber = "1122334455",
                     Status = "Completed",
+                    ServiceName = "Driving License Renewal",
                     SubmittedDate = "2024-01-05",
                     LastUpdated = "2024-01-12",
                     Notes = "Your driving license renewal is complete. Your new license is ready for pickup."
                 }
             },
             {
-                "5566778899",
+                "2119534887",
                 new OrderStatus
                 {
-                    OrderNumber = "5566778899",
+                    OrderNumber = "2119534887",
                     Status = "Pending",
+                    ServiceName = "Marriage with Foreigner",
                     SubmittedDate = "2024-01-20",
                     LastUpdated = "2024-01-21",
                     Notes = "Additional documents are required. Please upload the requested documents in your Absher account."
@@ -206,6 +198,7 @@ public class OrderStatusService
                 {
                     OrderNumber = "2233445566",
                     Status = "Under Review",
+                    ServiceName = "Work Permit",
                     SubmittedDate = "2024-01-15",
                     LastUpdated = "2024-01-18",
                     Notes = "Your work permit application is being reviewed."
@@ -219,6 +212,7 @@ public class OrderStatus
 {
     public string OrderNumber { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
+    public string? ServiceName { get; set; }
     public string? SubmittedDate { get; set; }
     public string? LastUpdated { get; set; }
     public string? Notes { get; set; }

@@ -63,7 +63,7 @@ public class KnowledgeBaseService
         }
     }
 
-    public string ProcessMessage(string message)
+    public string ProcessMessage(string message, string? category = null)
     {
         if (_knowledgeBase == null)
         {
@@ -74,57 +74,140 @@ public class KnowledgeBaseService
         var lowerMessage = message.ToLowerInvariant();
         string? response = null;
 
-        _logger.LogDebug("Processing message: {Message}", message);
+        _logger.LogDebug("Processing message: {Message} with category: {Category}", message, category);
 
-        // Check navigation
-        if (_knowledgeBase.Navigation != null && _knowledgeBase.Navigation.Any())
+        // When category is specified, prioritize that category's responses
+        if (category == "Service Explanation")
         {
-            foreach (var item in _knowledgeBase.Navigation)
+            // Check services FIRST for Service Explanation category
+            if (_knowledgeBase.Services != null && _knowledgeBase.Services.Any())
             {
-                if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                foreach (var item in _knowledgeBase.Services)
                 {
-                    if (item.Responses != null && item.Responses.Any())
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
                     {
-                        var random = new Random();
-                        response = item.Responses[random.Next(item.Responses.Count)];
-                        _logger.LogDebug("Matched navigation keyword, response selected");
-                        break;
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched services keyword for Service Explanation, response selected");
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Only check navigation if no service match found
+            if (string.IsNullOrEmpty(response) && _knowledgeBase.Navigation != null && _knowledgeBase.Navigation.Any())
+            {
+                foreach (var item in _knowledgeBase.Navigation)
+                {
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                    {
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched navigation keyword as fallback, response selected");
+                            break;
+                        }
                     }
                 }
             }
         }
-
-        // Check services
-        if (string.IsNullOrEmpty(response) && _knowledgeBase.Services != null && _knowledgeBase.Services.Any())
+        else if (category == "Navigation Guidance")
         {
-            foreach (var item in _knowledgeBase.Services)
+            // Check navigation FIRST for Navigation Guidance category
+            if (_knowledgeBase.Navigation != null && _knowledgeBase.Navigation.Any())
             {
-                if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                foreach (var item in _knowledgeBase.Navigation)
                 {
-                    if (item.Responses != null && item.Responses.Any())
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
                     {
-                        var random = new Random();
-                        response = item.Responses[random.Next(item.Responses.Count)];
-                        _logger.LogDebug("Matched services keyword, response selected");
-                        break;
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched navigation keyword for Navigation Guidance, response selected");
+                            break;
+                        }
                     }
                 }
             }
         }
-
-        // Check status
-        if (string.IsNullOrEmpty(response) && _knowledgeBase.Status != null && _knowledgeBase.Status.Any())
+        else if (category == "Status Inquiries")
         {
-            foreach (var item in _knowledgeBase.Status)
+            // Check status FIRST for Status Inquiries category
+            if (_knowledgeBase.Status != null && _knowledgeBase.Status.Any())
             {
-                if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                foreach (var item in _knowledgeBase.Status)
                 {
-                    if (item.Responses != null && item.Responses.Any())
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
                     {
-                        var random = new Random();
-                        response = item.Responses[random.Next(item.Responses.Count)];
-                        _logger.LogDebug("Matched status keyword, response selected");
-                        break;
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched status keyword for Status Inquiries, response selected");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            // Default order: navigation, services, status (when no category specified)
+            // Check navigation
+            if (_knowledgeBase.Navigation != null && _knowledgeBase.Navigation.Any())
+            {
+                foreach (var item in _knowledgeBase.Navigation)
+                {
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                    {
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched navigation keyword, response selected");
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Check services
+            if (string.IsNullOrEmpty(response) && _knowledgeBase.Services != null && _knowledgeBase.Services.Any())
+            {
+                foreach (var item in _knowledgeBase.Services)
+                {
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                    {
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched services keyword, response selected");
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Check status
+            if (string.IsNullOrEmpty(response) && _knowledgeBase.Status != null && _knowledgeBase.Status.Any())
+            {
+                foreach (var item in _knowledgeBase.Status)
+                {
+                    if (item.Keywords != null && item.Keywords.Any(keyword => lowerMessage.Contains(keyword.ToLowerInvariant())))
+                    {
+                        if (item.Responses != null && item.Responses.Any())
+                        {
+                            var random = new Random();
+                            response = item.Responses[random.Next(item.Responses.Count)];
+                            _logger.LogDebug("Matched status keyword, response selected");
+                            break;
+                        }
                     }
                 }
             }
