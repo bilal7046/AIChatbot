@@ -29,25 +29,25 @@ public class OrderStatusService
         if (string.IsNullOrWhiteSpace(message))
             return null;
 
-        // Saudi National ID patterns (10 digits)
-        // Pattern 1: 10-digit ID number
-        var pattern1 = @"\b(\d{10})\b";
+        // Extract any sequence of digits (any length)
+        // Pattern 1: Any number sequence (at least 1 digit)
+        var pattern1 = @"\b(\d+)\b";
         var match1 = Regex.Match(message, pattern1);
         if (match1.Success)
         {
             return match1.Groups[1].Value;
         }
 
-        // Pattern 2: ID with spaces or dashes (e.g., 123-456-7890 or 123 456 7890)
-        var pattern2 = @"\b(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})\b";
+        // Pattern 2: Number with spaces, dashes, or dots (e.g., 123-456-789 or 123 456 789)
+        var pattern2 = @"\b(\d+[-.\s]?\d+[-.\s]?\d+)\b";
         var match2 = Regex.Match(message, pattern2);
         if (match2.Success)
         {
             return match2.Groups[1].Value.Replace("-", "").Replace(".", "").Replace(" ", "");
         }
 
-        // Pattern 3: Arabic numerals (10 digits)
-        var pattern3 = @"[\u0660-\u0669\u06F0-\u06F9]{10}";
+        // Pattern 3: Arabic numerals (any length)
+        var pattern3 = @"[\u0660-\u0669\u06F0-\u06F9]+";
         var match3 = Regex.Match(message, pattern3);
         if (match3.Success)
         {
@@ -63,7 +63,7 @@ public class OrderStatusService
         }
 
         // Pattern 4: ID mentioned with number (e.g., "my ID is 1234567890")
-        var pattern4 = @"(?:id|identity|national\s+id|هوية|رقم\s+الهوية)[\s:]*(\d{10})";
+        var pattern4 = @"(?:id|identity|national\s+id|هوية|رقم\s+الهوية)[\s:]*(\d+)";
         var match4 = Regex.Match(message, pattern4, RegexOptions.IgnoreCase);
         if (match4.Success)
         {
@@ -87,6 +87,12 @@ public class OrderStatusService
         // Normalize ID number (remove spaces, dashes, etc.)
         var normalizedId = idNumber.Trim().Replace(" ", "").Replace("-", "").Replace(".", "");
 
+        // Validate it's a number (any length)
+        if (string.IsNullOrWhiteSpace(normalizedId) || !normalizedId.All(char.IsDigit))
+        {
+            return null;
+        }
+
         // Try exact match first
         if (_orderStatuses.TryGetValue(normalizedId, out var status))
         {
@@ -103,7 +109,42 @@ public class OrderStatusService
             }
         }
 
-        return null;
+        // Generate a status for any ID number that's not in mock data
+        return GenerateStatusForId(normalizedId);
+    }
+
+    private OrderStatus GenerateStatusForId(string idNumber)
+    {
+        // Use the ID number as a seed for consistent status generation
+        var seed = idNumber.GetHashCode();
+        var random = new Random(seed);
+        
+        // List of possible statuses
+        var statuses = new[] { "Submitted", "Under Review", "Approved", "Pending", "Completed" };
+        var selectedStatus = statuses[random.Next(statuses.Length)];
+        
+        // List of possible services
+        var services = new[] { "ID Renewal", "Passport Application", "Driving License Renewal", "Work Permit", "Marriage with Foreigner", "Travel in Banned Countries" };
+        var selectedService = services[random.Next(services.Length)];
+        
+        // Generate appropriate notes based on status
+        string? notes = selectedStatus switch
+        {
+            "Submitted" => "Your request is in the queue and will be processed soon.",
+            "Under Review" => "Your application is being reviewed by the relevant department.",
+            "Approved" => "Your application has been approved. Please check your Absher account for next steps.",
+            "Pending" => "Waiting for documents or information from you. Check your Absher account.",
+            "Completed" => "Your request has been completed successfully.",
+            _ => null
+        };
+        
+        return new OrderStatus
+        {
+            OrderNumber = idNumber,
+            ServiceName = selectedService,
+            Status = selectedStatus,
+            Notes = notes
+        };
     }
 
     public string GetStatusResponse(string idNumber, OrderStatus? status)

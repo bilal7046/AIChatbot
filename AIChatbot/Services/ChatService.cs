@@ -50,8 +50,8 @@ public class ChatService
                 
                 if (!alreadyAsked)
                 {
-                    return "I'd be happy to check your application status! Could you please provide your Saudi National ID number? " +
-                           "It's a 10-digit number. You can find it on your ID card or Iqama.";
+                    return "I'd be happy to check your application status! Could you please provide your ID number? " +
+                           "You can find it on your ID card or Iqama.";
                 }
             }
         }
