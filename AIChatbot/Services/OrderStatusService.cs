@@ -135,6 +135,8 @@ public class OrderStatusService
             response += $" {status.Notes}";
         }
 
+        response += $"\n\nClick here";
+
         return response;
     }
 

@@ -1149,7 +1149,16 @@
             @foreach (var message in Messages)
             {
                 <div class="jmm-message jmm-message-@(message.IsUser ? "user" : "bot")">
-                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "")">@message.Text</div>
+                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "")">
+                        @if (message.IsUser)
+                        {
+                            @message.Text
+                        }
+                        else
+                        {
+                            @((MarkupString)message.Text)
+                        }
+                    </div>
                 </div>
             }
             
