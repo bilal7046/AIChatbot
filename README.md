@@ -52,7 +52,6 @@ Allows users to ask about the status of requests or applications and receive ins
 - **ChatService**: Main orchestration service for message processing
 - **OpenAIService**: Handles OpenAI API integration with fallback mechanisms
 - **KnowledgeBaseService**: JSON-based knowledge base for predefined responses
-- **DocumentService**: Extracts and processes content from documents and websites
 - **OrderStatusService**: Order number extraction and status lookup system
 
 ### Frontend Technologies
