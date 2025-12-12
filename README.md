@@ -25,7 +25,7 @@ Provides clear, simple explanations of how specific Absher services work and wha
 
 ### 3. **Status Inquiries** 
 Allows users to ask about the status of requests or applications and receive instant, AI-generated updates.
-- **Order Number Tracking**: Automatically extracts order numbers (REQ-XXXXXX, APP-XXXXXX) from user queries
+- **Id Number**: Automatically extracts Application Status
 - Provides real-time status updates including:
   - Submitted
   - Under Review
@@ -35,29 +35,6 @@ Allows users to ask about the status of requests or applications and receive ins
   - Pending
 - Shows submission dates, last update times, and relevant notes
 - Currently uses mock data for demonstration (ready for real-time API integration)
-
-### Phase 2: Advanced Features
-- **User Authentication**: Secure login integration with Absher accounts
-- **Personalized Dashboard**: Show user-specific information (family members, workers, documents)
-- **Document Management**: View and download digital documents (Iqama, licenses, certificates)
-- **Payment Integration**: Process payments for services directly through the chatbot
-- **Notification System**: Real-time SMS/email notifications for status updates
-- **Multi-language Full Support**: Complete Arabic language support with RTL layout
-
-### Phase 3: Intelligent Features
-- **Predictive Assistance**: AI predicts what users might need based on their profile
-- **Smart Recommendations**: Suggest relevant services based on user history
-- **Document Upload**: Allow users to upload required documents through the chat
-- **Voice Commands**: Full voice interaction for all features
-- **Chat History**: Save conversation history for logged-in users
-- **Analytics Dashboard**: Track common questions and improve responses
-
-### Phase 4: Enterprise Features
-- **Admin Panel**: Manage knowledge base, monitor conversations, view analytics
-- **Custom Integrations**: API for third-party integrations
-- **Advanced Analytics**: Detailed insights into user behavior and service usage
-- **A/B Testing**: Test different response strategies
-- **Multi-tenant Support**: Support for multiple government portals
 
 ##  Technologies Used to Build This Agent
 
