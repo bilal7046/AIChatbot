@@ -84,43 +84,42 @@ public class OrderStatusService
     {
         if (status == null)
         {
-            return $"I couldn't find an order with number '{orderNumber}' in the Absher system. " +
-                   "Please verify the order number and try again. " +
-                   "Order numbers are typically in formats like REQ-123456 or APP-123456. " +
-                   "You can find your order number in the confirmation email or SMS you received when you submitted your request.";
+            return $"Sorry, I couldn't find order '{orderNumber}' in the system. " +
+                   "Double-check the number and try again. " +
+                   "It's usually something like REQ-123456 or APP-123456. " +
+                   "You can find it in the confirmation email or SMS you got when you submitted your request.";
         }
 
         var statusMessage = status.Status switch
         {
-            "Submitted" => "Your request has been received and is in queue for processing.",
-            "Under Review" => "Your application is currently being reviewed by our team.",
-            "Approved" => "Your request has been approved! You may need to complete additional steps like payment or document pickup.",
-            "Rejected" => $"Your request has been rejected. Reason: {status.Notes ?? "Please check your Absher account for details."}",
-            "Completed" => "Your request has been completed and is ready for pickup or delivery.",
-            "Pending" => "Your request is pending additional information or documents. Please check your Absher account for required actions.",
+            "Submitted" => "We got your request and it's in the queue now.",
+            "Under Review" => "Your application's being looked at by our team right now.",
+            "Approved" => "Great news! Your request was approved. You might need to do a few more things like pay fees or pick up documents.",
+            "Rejected" => $"Unfortunately, your request was rejected. {status.Notes ?? "Check your Absher account for more details on why."}",
+            "Completed" => "All done! Your request is complete and ready for pickup or delivery.",
+            "Pending" => "Your request is waiting for some info or documents from you. Check your Absher account to see what's needed.",
             _ => $"Your request status is: {status.Status}"
         };
 
-        var response = $"📋 **Order Number:** {orderNumber}\n\n" +
-                      $"📊 **Status:** {status.Status}\n\n" +
-                      $"{statusMessage}\n\n";
+        var response = $"Order {orderNumber} is currently {status.Status.ToLower()}.\n\n" +
+                      $"{statusMessage}";
 
         if (!string.IsNullOrWhiteSpace(status.SubmittedDate))
         {
-            response += $"📅 **Submitted:** {status.SubmittedDate}\n";
+            response += $"\n\nYou submitted it on {status.SubmittedDate}.";
         }
 
         if (!string.IsNullOrWhiteSpace(status.LastUpdated))
         {
-            response += $"🔄 **Last Updated:** {status.LastUpdated}\n";
+            response += $" Last update was {status.LastUpdated}.";
         }
 
         if (!string.IsNullOrWhiteSpace(status.Notes) && status.Status != "Rejected")
         {
-            response += $"\n📝 **Notes:** {status.Notes}";
+            response += $"\n\n{status.Notes}";
         }
 
-        response += "\n\nYou can also check your status by logging into your Absher account and going to 'My Services' section.";
+        response += "\n\nYou can also check this anytime by logging into Absher and going to 'My Services'.";
 
         return response;
     }

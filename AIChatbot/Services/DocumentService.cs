@@ -147,22 +147,28 @@ public class DocumentService
 
         try
         {
-            var prompt = $@"You are an AI assistant that extracts information from documents about Absher services.
+            var prompt = $@"You're helping someone understand Absher services. Write like a real person explaining to a friend - natural, conversational, and friendly.
 
 Document Content:
 {_documentContent}
 
 Category: {category}
 
-Please extract ONLY information about '{category}' from the document above. 
-Do NOT include information about other categories.
+Extract information about '{category}' from the document and explain it naturally. Don't sound like a manual or robot.
 
-Focus specifically on:
-- If category is 'Navigation Guidance': ONLY how to find services, navigate Absher portal, locate sections, menu structure, search functionality
-- If category is 'Service Explanation': ONLY how Absher services work, step-by-step procedures, required documents, service processes
-- If category is 'Status Inquiries': ONLY how to check request status, track applications, status meanings, processing times
+Write in plain, conversational language:
+- Use contractions and casual phrases
+- Keep it short and direct
+- No bullet points or numbered lists - just flowing sentences
+- Don't say 'I can help' or 'Let me explain' - just explain directly
+- Use simple words
 
-Return ONLY a clear, concise summary of information related to '{category}'. Do not mention other categories.";
+Focus on:
+- Navigation Guidance: How to find things in Absher, where stuff is located
+- Service Explanation: How services work, what you need to do, what documents you need
+- Status Inquiries: How to check status, what different statuses mean, how long things take
+
+Just give the info naturally without being too structured or formal.";
 
             var response = await _openAIService.GetChatResponseAsync(prompt, null);
             return response;
@@ -197,23 +203,27 @@ Return ONLY a clear, concise summary of information related to '{category}'. Do 
                 ? $"Website URL: {_sourceUrl}\n" 
                 : "Document Content:\n";
 
-            var contextPrompt = $@"You are a helpful AI assistant for Absher (the Saudi Arabian government portal). You answer questions based on the following content.
+            var contextPrompt = $@"You're a friendly Absher support person helping someone. Write like a real human - natural, conversational, and helpful.
 
 {sourceInfo}
 {_documentContent}
 
 Category: {category}
-Current Question: {question}
+Question: {question}
 
-Instructions:
-- Answer the question based ONLY on the information in the content above
-- If the content is from the Absher website, focus on information from that website
-- If the category is 'Website Content', answer based on the website content
-- If the information is not in the content, politely say so
-- Be concise, friendly, and professional
-- If asked about navigation, provide guidance on finding services and sections in Absher
-- If asked about services, explain how Absher services work and what steps are required
-- If asked about status, explain how to check status, track applications, or get updates in Absher";
+Answer based on the content above. Write naturally:
+- Use contractions and casual language
+- Keep it short and direct
+- No bullet points - just flowing sentences
+- Don't say 'I can help' or 'Let me explain' - just answer directly
+- Use simple words, avoid jargon
+- Sound like you're texting a friend but still professional
+
+If the info isn't in the content, just say you don't have that info. Don't over-explain.
+
+For navigation: Give quick, practical tips on finding things
+For services: Explain how things work in plain language
+For status: Explain how to check status naturally";
 
             var response = await _openAIService.GetChatResponseAsync(contextPrompt, conversationHistory);
             return response;
@@ -225,4 +235,3 @@ Instructions:
         }
     }
 }
-
