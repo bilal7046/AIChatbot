@@ -147,7 +147,7 @@ public class DocumentService
 
         try
         {
-            var prompt = $@"You are an AI assistant that extracts information from documents.
+            var prompt = $@"You are an AI assistant that extracts information from documents about Absher services.
 
 Document Content:
 {_documentContent}
@@ -158,9 +158,9 @@ Please extract ONLY information about '{category}' from the document above.
 Do NOT include information about other categories.
 
 Focus specifically on:
-- If category is 'Navigation Guidance': ONLY locations, addresses, directions, how to find/visit, office hours
-- If category is 'Service Explanation': ONLY services offered, what they do, capabilities, offerings
-- If category is 'Status Inquiries': ONLY how to check status, order tracking, request updates, processing times
+- If category is 'Navigation Guidance': ONLY how to find services, navigate Absher portal, locate sections, menu structure, search functionality
+- If category is 'Service Explanation': ONLY how Absher services work, step-by-step procedures, required documents, service processes
+- If category is 'Status Inquiries': ONLY how to check request status, track applications, status meanings, processing times
 
 Return ONLY a clear, concise summary of information related to '{category}'. Do not mention other categories.";
 
@@ -197,7 +197,7 @@ Return ONLY a clear, concise summary of information related to '{category}'. Do 
                 ? $"Website URL: {_sourceUrl}\n" 
                 : "Document Content:\n";
 
-            var contextPrompt = $@"You are a helpful AI assistant. You answer questions based on the following content.
+            var contextPrompt = $@"You are a helpful AI assistant for Absher (the Saudi Arabian government portal). You answer questions based on the following content.
 
 {sourceInfo}
 {_documentContent}
@@ -207,13 +207,13 @@ Current Question: {question}
 
 Instructions:
 - Answer the question based ONLY on the information in the content above
-- If the content is from a website, focus on information from that website
+- If the content is from the Absher website, focus on information from that website
 - If the category is 'Website Content', answer based on the website content
 - If the information is not in the content, politely say so
 - Be concise, friendly, and professional
-- If asked about navigation, provide location details, directions, addresses
-- If asked about services, explain what services are offered
-- If asked about status, explain how to check status, track orders, or get updates";
+- If asked about navigation, provide guidance on finding services and sections in Absher
+- If asked about services, explain how Absher services work and what steps are required
+- If asked about status, explain how to check status, track applications, or get updates in Absher";
 
             var response = await _openAIService.GetChatResponseAsync(contextPrompt, conversationHistory);
             return response;

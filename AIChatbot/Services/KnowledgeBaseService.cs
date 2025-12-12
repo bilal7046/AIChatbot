@@ -19,7 +19,13 @@ public class KnowledgeBaseService
     {
         try
         {
-            var jsonPath = Path.Combine(_environment.WebRootPath, "knowledge-base.json");
+            // Try widget directory first (at project root level)
+            var widgetPath = Path.Combine(_environment.ContentRootPath, "..", "widget", "knowledge-base.json");
+            widgetPath = Path.GetFullPath(widgetPath);
+            
+            // Fallback to wwwroot if widget path doesn't exist
+            var jsonPath = File.Exists(widgetPath) ? widgetPath : Path.Combine(_environment.WebRootPath, "knowledge-base.json");
+            var sourceLocation = File.Exists(widgetPath) ? "widget/knowledge-base.json" : "wwwroot/knowledge-base.json";
             
             if (File.Exists(jsonPath))
             {
@@ -37,7 +43,8 @@ public class KnowledgeBaseService
                 }
                 else
                 {
-                    _logger.LogInformation("Knowledge base loaded successfully. Navigation items: {Count}, Services items: {ServicesCount}, Status items: {StatusCount}", 
+                    _logger.LogInformation("Knowledge base loaded successfully from {Source}. Navigation items: {Count}, Services items: {ServicesCount}, Status items: {StatusCount}", 
+                        sourceLocation,
                         _knowledgeBase.Navigation?.Count ?? 0,
                         _knowledgeBase.Services?.Count ?? 0,
                         _knowledgeBase.Status?.Count ?? 0);
@@ -127,7 +134,7 @@ public class KnowledgeBaseService
         if (string.IsNullOrEmpty(response))
         {
             _logger.LogWarning("No keyword match found for message: {Message}", message);
-            response = $"I understand you're asking about: \"{message}\". Could you please rephrase your question? I can help with navigation, services, or status inquiries.";
+            response = $"I understand you're asking about: \"{message}\". Could you please rephrase your question? I can help you with Absher navigation guidance, service explanations, or status inquiries.";
         }
 
         return response;
@@ -141,12 +148,12 @@ public class KnowledgeBaseService
             {
                 new KnowledgeItem
                 {
-                    Keywords = new List<string> { "where", "location", "find", "directions", "how to get", "navigate", "address", "office", "visit" },
+                    Keywords = new List<string> { "where", "find", "navigate", "section", "service", "menu", "how to find", "where is", "location", "page" },
                     Responses = new List<string>
                     {
-                        "You can find us at 123 Main Street, Downtown District. We're open Monday to Friday, 9 AM to 5 PM, and Saturday 10 AM to 2 PM.",
-                        "Our office is located in the downtown area at 123 Main Street. You can reach us by taking the metro to Central Station, then it's a 5-minute walk.",
-                        "For directions to our office, please visit our website or call us at +1-234-567-8900. We're located at 123 Main Street."
+                        "To find a service in Absher, you can use the main menu at the top of the page. Services are organized by categories like Civil Affairs, Traffic, Labor, and more. You can also use the search bar to quickly find what you're looking for.",
+                        "In Absher, you can navigate to different services using the navigation menu. The main categories include: Civil Affairs (الأحوال المدنية), Traffic Services (المرور), Labor Services (العمل), and more. Click on any category to see available services.",
+                        "To navigate Absher, use the top navigation menu. You'll find services grouped by type. You can also use the search feature by typing keywords related to the service you need. What specific service are you looking for?"
                     }
                 }
             },
@@ -154,12 +161,12 @@ public class KnowledgeBaseService
             {
                 new KnowledgeItem
                 {
-                    Keywords = new List<string> { "service", "what do you", "offer", "provide", "help with", "can you", "what services", "capabilities", "do you do" },
+                    Keywords = new List<string> { "how", "explain", "what is", "what are", "how does", "how to", "steps", "process", "procedure", "guide" },
                     Responses = new List<string>
                     {
-                        "We offer a wide range of services including business consulting, technology solutions, software development, and customer support. How can I assist you today?",
-                        "Our services include business consulting, technology solutions, digital transformation, and ongoing support. What specific area interests you?",
-                        "We provide comprehensive solutions for your business needs including strategy consulting, custom software development, and IT support. Would you like to know more about a specific service?"
+                        "I can explain how Absher services work! Each service has specific steps and requirements. Could you tell me which specific service you'd like me to explain? For example: ID renewal, passport application, work permit, etc.",
+                        "I'm here to provide clear explanations of Absher services. Each service follows a specific process with required documents and steps. What service would you like me to explain?",
+                        "I can walk you through how any Absher service works. Services typically require: logging in, selecting the service, providing required information, uploading documents if needed, and submitting. Which service are you interested in?"
                     }
                 }
             },
@@ -167,12 +174,12 @@ public class KnowledgeBaseService
             {
                 new KnowledgeItem
                 {
-                    Keywords = new List<string> { "status", "check", "order", "request", "track", "update", "when", "progress", "where is" },
+                    Keywords = new List<string> { "status", "check", "track", "where is", "progress", "update", "application status", "request status" },
                     Responses = new List<string>
                     {
-                        "Your request is currently being processed. Expected completion: within 2-3 business days. You'll receive an email notification when it's ready.",
-                        "I've checked your status - everything is on track. Your request is in progress and should be completed within the next 2-3 business days.",
-                        "Status: In Progress. Our team is working on your request and will notify you via email upon completion. Expected timeline: 2-3 business days."
+                        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates.",
+                        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS.",
+                        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates."
                     }
                 }
             }

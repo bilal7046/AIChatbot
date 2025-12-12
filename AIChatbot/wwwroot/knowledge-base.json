@@ -1,64 +1,107 @@
 {
   "navigation": [
     {
-      "keywords": ["where", "location", "find", "directions", "how to get", "navigate", "address", "office", "visit"],
+      "keywords": ["where", "find", "navigate", "section", "service", "menu", "how to find", "where is", "location", "page"],
       "responses": [
-        "You can find us at 123 Main Street, Downtown District. We're open Monday to Friday, 9 AM to 5 PM, and Saturday 10 AM to 2 PM.",
-        "Our office is located in the downtown area at 123 Main Street. You can reach us by taking the metro to Central Station, then it's a 5-minute walk.",
-        "For directions to our office, please visit our website or call us at +1-234-567-8900. We're located at 123 Main Street.",
-        "We're situated at 123 Main Street in the heart of downtown. Parking is available in the adjacent parking garage.",
-        "Our location is 123 Main Street. We're easily accessible by public transport - the nearest metro station is Central Station."
+        "To find a service in Absher, you can use the main menu at the top of the page. Services are organized by categories like Civil Affairs, Traffic, Labor, and more. You can also use the search bar to quickly find what you're looking for.",
+        "In Absher, you can navigate to different services using the navigation menu. The main categories include: Civil Affairs (الأحوال المدنية), Traffic Services (المرور), Labor Services (العمل), and more. Click on any category to see available services.",
+        "To navigate Absher, use the top navigation menu. You'll find services grouped by type. You can also use the search feature by typing keywords related to the service you need. What specific service are you looking for?",
+        "Absher services are organized in the main menu. Look for categories like: Family Services, Traffic Services, Labor Services, and Business Services. Each category contains related services. Can you tell me which service you need?",
+        "You can find services in Absher by browsing the main menu or using the search function. Services are categorized for easy access. What type of service are you trying to find?"
+      ]
+    },
+    {
+      "keywords": ["civil affairs", "أحوال مدنية", "family", "id", "passport", "birth certificate", "marriage"],
+      "responses": [
+        "Civil Affairs services (الأحوال المدنية) in Absher include: ID card services, passport services, family registry, birth certificates, marriage certificates, and more. You can find these under the 'Civil Affairs' section in the main menu.",
+        "For Civil Affairs services, navigate to the 'Civil Affairs' (الأحوال المدنية) section in Absher. Here you can access services related to national ID, passports, family documents, and civil status certificates.",
+        "Civil Affairs services are located in the main Absher menu under 'Civil Affairs' (الأحوال المدنية). This section includes all services related to personal documents and family affairs."
+      ]
+    },
+    {
+      "keywords": ["traffic", "مرور", "driving license", "vehicle", "car", "license", "driving"],
+      "responses": [
+        "Traffic services (المرور) in Absher include: driving license services, vehicle registration, traffic violations, license renewal, and vehicle ownership transfer. Find these under the 'Traffic Services' section.",
+        "For traffic-related services, go to the 'Traffic Services' (المرور) section in Absher. Here you can manage your driving license, vehicle registration, check violations, and more.",
+        "Traffic services are available in Absher under the 'Traffic Services' (المرور) menu. This includes all services related to vehicles and driving licenses."
+      ]
+    },
+    {
+      "keywords": ["labor", "عمل", "work permit", "employment", "job", "worker", "employee"],
+      "responses": [
+        "Labor services (العمل) in Absher include: work permit services, employment contracts, labor card services, and worker-related services. These are found under the 'Labor Services' section.",
+        "For labor services, navigate to the 'Labor Services' (العمل) section in Absher. Here you can access work permits, employment documentation, and labor-related services.",
+        "Labor services are located under the 'Labor Services' (العمل) menu in Absher. This section handles all work permit and employment-related services."
       ]
     }
   ],
   "services": [
     {
-      "keywords": ["service", "what do you", "offer", "provide", "help with", "can you", "what services", "capabilities", "do you do"],
+      "keywords": ["how", "explain", "what is", "what are", "how does", "how to", "steps", "process", "procedure", "guide"],
       "responses": [
-        "We offer a wide range of services including business consulting, technology solutions, software development, and customer support. How can I assist you today?",
-        "Our services include business consulting, technology solutions, digital transformation, and ongoing support. What specific area interests you?",
-        "We provide comprehensive solutions for your business needs including strategy consulting, custom software development, and IT support. Would you like to know more about a specific service?",
-        "Our main services are: Business Consulting, Technology Solutions, Software Development, and Customer Support. Which one would you like to learn more about?",
-        "We specialize in helping businesses transform through technology. Our services cover consulting, development, implementation, and support. What challenges are you facing?"
+        "I can explain how Absher services work! Each service has specific steps and requirements. Could you tell me which specific service you'd like me to explain? For example: ID renewal, passport application, work permit, etc.",
+        "I'm here to provide clear explanations of Absher services. Each service follows a specific process with required documents and steps. What service would you like me to explain?",
+        "I can walk you through how any Absher service works. Services typically require: logging in, selecting the service, providing required information, uploading documents if needed, and submitting. Which service are you interested in?"
       ]
     },
     {
-      "keywords": ["consulting", "consultant", "advice", "strategy"],
+      "keywords": ["id", "national id", "identity card", "renew", "renewal", "هوية"],
       "responses": [
-        "Our consulting services help businesses identify opportunities, develop strategies, and implement solutions. We work with companies of all sizes.",
-        "We provide strategic consulting to help you make informed decisions about technology, processes, and business growth.",
-        "Our consulting team specializes in digital transformation, process optimization, and strategic planning. Would you like to schedule a consultation?"
+        "To renew your National ID through Absher: 1) Log in to your Absher account, 2) Go to Civil Affairs services, 3) Select 'ID Services', 4) Choose 'Renew ID', 5) Follow the instructions and pay the fees. You'll need a recent photo and may need to visit a Civil Affairs office.",
+        "National ID renewal in Absher: Log in → Civil Affairs → ID Services → Renew ID. You'll need to provide updated information, upload a recent photo, and pay the renewal fee. The process is usually completed within a few days.",
+        "For ID renewal: Access Absher, navigate to Civil Affairs section, select ID renewal service, complete the form with required information, upload necessary documents, and submit. Processing time varies but is typically quick."
       ]
     },
     {
-      "keywords": ["development", "software", "app", "website", "build", "create"],
+      "keywords": ["passport", "جواز سفر", "apply", "application"],
       "responses": [
-        "We develop custom software solutions, web applications, and mobile apps tailored to your business needs.",
-        "Our development team creates scalable, modern applications using the latest technologies. We handle everything from design to deployment.",
-        "We build custom software solutions including web apps, mobile apps, and enterprise systems. What type of application do you need?"
+        "To apply for a passport through Absher: 1) Log in to Absher, 2) Go to Civil Affairs services, 3) Select 'Passport Services', 4) Choose 'New Passport Application' or 'Passport Renewal', 5) Fill in the required information, 6) Upload necessary documents, 7) Pay fees, 8) Schedule an appointment if required.",
+        "Passport application process: Log in to Absher → Civil Affairs → Passport Services → Select application type → Complete form → Upload documents (ID, photo) → Pay fees → Submit. You may need to visit a Civil Affairs office for biometrics.",
+        "For passport services: Access Absher, go to Civil Affairs section, select Passport Services, choose your service type, provide required information and documents, pay the applicable fees, and follow the instructions for completion."
+      ]
+    },
+    {
+      "keywords": ["work permit", "تصريح عمل", "iqama", "إقامة"],
+      "responses": [
+        "To apply for a work permit through Absher: 1) Log in (employer or authorized person), 2) Go to Labor Services, 3) Select 'Work Permit Services', 4) Choose the type of permit needed, 5) Fill in worker and employer information, 6) Upload required documents, 7) Pay fees, 8) Submit application. Processing time varies.",
+        "Work permit application: Log in to Absher → Labor Services → Work Permit → Select permit type → Enter worker details → Upload documents (contract, medical, etc.) → Pay fees → Submit. Status can be tracked in your Absher account.",
+        "For work permits: Access Absher Labor Services section, select Work Permit application, provide worker and employment details, upload required documents (employment contract, medical certificate if needed), pay fees, and submit. Track status through Absher."
+      ]
+    },
+    {
+      "keywords": ["driving license", "رخصة قيادة", "license renewal", "traffic license"],
+      "responses": [
+        "To renew your driving license through Absher: 1) Log in, 2) Go to Traffic Services, 3) Select 'Driving License Services', 4) Choose 'License Renewal', 5) Check your license status and expiry, 6) Complete renewal form, 7) Pay renewal fees, 8) You may need to complete a medical examination. The renewed license will be available for pickup or delivery.",
+        "Driving license renewal: Log in to Absher → Traffic Services → Driving License → Renew License → Complete form → Pay fees → Complete medical if required → Receive confirmation. Processing usually takes a few days.",
+        "For license renewal: Access Absher Traffic Services, select Driving License renewal, verify your license information, complete the renewal application, pay applicable fees, and follow any additional requirements like medical examination."
       ]
     }
   ],
   "status": [
     {
-      "keywords": ["status", "check", "order", "request", "track", "update", "when", "progress", "where is"],
+      "keywords": ["status", "check", "track", "where is", "progress", "update", "application status", "request status"],
       "responses": [
-        "Your request is currently being processed. Expected completion: within 2-3 business days. You'll receive an email notification when it's ready.",
-        "I've checked your status - everything is on track. Your request is in progress and should be completed within the next 2-3 business days.",
-        "Status: In Progress. Our team is working on your request and will notify you via email upon completion. Expected timeline: 2-3 business days.",
-        "Your request status is 'Active' and is being handled by our team. We'll send you an update as soon as there's progress.",
-        "I can see your request is currently being processed. The estimated completion time is 2-3 business days. You'll receive an email with updates."
+        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates.",
+        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS.",
+        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates.",
+        "Check your Absher request status by: Logging in → Navigating to 'My Services' → Finding your request in the list → Viewing details. The system shows real-time status and any required actions. SMS notifications are sent for important updates."
       ]
     },
     {
-      "keywords": ["when", "how long", "time", "duration", "deadline"],
+      "keywords": ["when", "how long", "time", "duration", "processing time", "how much time"],
       "responses": [
-        "Most requests are completed within 2-3 business days. For urgent matters, please contact our support team directly.",
-        "The typical processing time is 2-3 business days. Complex requests may take longer, and we'll keep you informed of any delays.",
-        "Standard processing time is 2-3 business days. If you need expedited service, please reach out to our team."
+        "Processing times in Absher vary by service type. Most services are processed within 1-3 business days, while some may take up to a week. Complex applications or those requiring additional verification may take longer. You can check the estimated time in the service details.",
+        "Processing times depend on the service: Simple services (like status checks) are instant, standard services (ID renewal, license renewal) typically take 1-3 days, while complex services (new applications, work permits) may take 3-7 business days. Check your request status for updates.",
+        "Absher processing times: Most services complete within 1-3 business days. Services requiring document verification or appointments may take longer. You'll receive SMS notifications when your request status changes. Check 'My Services' for current status."
+      ]
+    },
+    {
+      "keywords": ["approved", "rejected", "completed", "pending", "under review"],
+      "responses": [
+        "If your request shows 'Approved', it means it has been processed successfully. You may need to complete additional steps like payment, document pickup, or appointment scheduling. Check the request details for next steps.",
+        "If status is 'Under Review', your application is being processed. This is normal and you'll be notified when the status changes. 'Pending' means waiting for required information or documents - check if any action is needed from you.",
+        "Status meanings: 'Approved' = Successfully processed, 'Under Review' = Being processed, 'Pending' = Waiting for information/documents, 'Rejected' = Application declined (check reason), 'Completed' = Fully processed and ready. Check request details for specific information."
       ]
     }
   ]
 }
-
-

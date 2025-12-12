@@ -32,7 +32,11 @@ public class ChatService
         {
             try
             {
-                var response = await _openAIService.GetChatResponseAsync(message, conversationHistory);
+                // Pass category context to OpenAI if available
+                var contextualMessage = !string.IsNullOrWhiteSpace(category) 
+                    ? $"[Category: {category}] {message}"
+                    : message;
+                var response = await _openAIService.GetChatResponseAsync(contextualMessage, conversationHistory);
                 return response;
             }
             catch (Exception ex)

@@ -1016,7 +1016,7 @@
                         </svg>
                     </button>
                 }
-                <h3>AI Assistant</h3>
+                <h3>Absher Assistant</h3>
             </div>
             <button class="jmm-widget-close" @onclick="ToggleChat">×</button>
         </div>
@@ -1026,8 +1026,8 @@
             {
                 <div class="jmm-message jmm-message-bot">
                     <div class="jmm-message-content">
-                        <strong>Welcome! I'm your AI assistant.</strong><br/>
-                        Please select a service you'd like help with:
+                        <strong>Welcome to Absher! I'm your AI assistant.</strong><br/>
+                        Please select how I can help you today:
                     </div>
                 </div>
                 
@@ -1055,7 +1055,7 @@
                     </button>
                     
                     <div class="jmm-url-input-section">
-                        <div class="jmm-url-label">Or ask questions about a website:</div>
+                        <div class="jmm-url-label">Or load Absher website content:</div>
                         <div class="jmm-url-input-wrapper">
                             <input type="text" 
                                    @bind="websiteUrl" 
@@ -1097,7 +1097,7 @@
                 <div class="jmm-message jmm-message-bot">
                     <div class="jmm-message-content">
                         <strong>@SelectedCategory</strong><br/>
-                        How can I help you with @SelectedCategory?.ToLower()? Ask me any questions!
+                        How can I help you with @SelectedCategory?.ToLower() in Absher? Ask me any questions!
                     </div>
                 </div>
                 
@@ -1263,11 +1263,11 @@
         // Show a simple, sweet welcome message based on category
         string welcomeMessage = category switch
         {
-            "Navigation Guidance" => "Hi! I'm here to help you find us! 🗺️\n\nI can help you with directions, our location, office hours, and how to get here. What would you like to know?",
-            "Service Explanation" => "Hello! I'd love to tell you about our services! 💼\n\nI can explain what we offer, our capabilities, and how we can help your business. What interests you?",
-            "Status Inquiries" => "Hey there! I can help you check on your request! 📊\n\nI can tell you how to track your order, check status updates, and find out processing times. What do you need?",
-            "Website Content" => "Hi! I've loaded the website content! 🌐\n\nI can answer questions about the website you provided. What would you like to know?",
-            _ => $"I'm ready to help you with {category}! What would you like to know?"
+            "Navigation Guidance" => "مرحباً! I'm here to help you navigate Absher! 🗺️\n\nI can help you find the right section or service inside Absher quickly and easily. What are you looking for?",
+            "Service Explanation" => "Hello! I can explain Absher services! 💼\n\nI provide clear, simple explanations of how specific Absher services work and what steps are required. Which service would you like to know about?",
+            "Status Inquiries" => "Hey there! I can check your Absher request status! 📊\n\nI can help you ask about the status of your requests or applications and provide instant updates. What would you like to check?",
+            "Website Content" => "Hi! I've loaded the Absher website content! 🌐\n\nI can answer questions about Absher based on the website you provided. What would you like to know?",
+            _ => $"I'm ready to help you with {category} in Absher! What would you like to know?"
         };
 
         Messages.Add(new AIChatbot.Services.ChatMessage { IsUser = false, Text = welcomeMessage });

@@ -15,24 +15,12 @@ builder.Services.AddScoped<ChatService>();
 
 var app = builder.Build();
 
-// Initialize knowledge base and load document
-using (var scope = app.Services.CreateScope())
-{
-    var knowledgeBaseService = scope.ServiceProvider.GetRequiredService<KnowledgeBaseService>();
-    await knowledgeBaseService.LoadKnowledgeBaseAsync();
-    
-    // Load document if it exists
-    var documentService = scope.ServiceProvider.GetRequiredService<DocumentService>();
-    try
+    // Initialize knowledge base
+    using (var scope = app.Services.CreateScope())
     {
-        await documentService.LoadDocumentFromFileAsync("knowledge-document.txt");
+        var knowledgeBaseService = scope.ServiceProvider.GetRequiredService<KnowledgeBaseService>();
+        await knowledgeBaseService.LoadKnowledgeBaseAsync();
     }
-    catch (Exception ex)
-    {
-        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        logger.LogWarning(ex, "Could not load knowledge document");
-    }
-}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
