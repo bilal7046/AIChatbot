@@ -24,16 +24,35 @@ public class ChatService
 
     public async Task<string> ProcessMessageAsync(string message, List<ChatMessage>? conversationHistory = null, string? category = null)
     {
-        // Check for order number in status inquiries
-        if (category == "Status Inquiries" || string.IsNullOrWhiteSpace(category))
+        // Always check for ID number first (in case user provides it in follow-up message)
+        var idNumber = _orderStatusService.ExtractIdNumber(message);
+        if (!string.IsNullOrWhiteSpace(idNumber))
         {
-            var orderNumber = _orderStatusService.ExtractOrderNumber(message);
-            if (!string.IsNullOrWhiteSpace(orderNumber))
+            _logger.LogInformation("ID number extracted: {IdNumber}", idNumber);
+            var status = _orderStatusService.GetOrderStatus(idNumber);
+            var statusResponse = _orderStatusService.GetStatusResponse(idNumber, status);
+            return statusResponse;
+        }
+
+        // Check for status inquiries in Status Inquiries category
+        if (category == "Status Inquiries")
+        {
+            // Check if user is asking about status without providing ID number
+            if (_orderStatusService.IsStatusInquiry(message))
             {
-                _logger.LogInformation("Order number extracted: {OrderNumber}", orderNumber);
-                var status = _orderStatusService.GetOrderStatus(orderNumber);
-                var statusResponse = _orderStatusService.GetStatusResponse(orderNumber, status);
-                return statusResponse;
+                // Check if we already asked for ID number in previous messages
+                var alreadyAsked = conversationHistory != null && 
+                    conversationHistory.Any(m => !m.IsUser && 
+                    (m.Text.Contains("ID number", StringComparison.OrdinalIgnoreCase) || 
+                     m.Text.Contains("national ID", StringComparison.OrdinalIgnoreCase) ||
+                     m.Text.Contains("identity number", StringComparison.OrdinalIgnoreCase) ||
+                     m.Text.Contains("provide your ID", StringComparison.OrdinalIgnoreCase)));
+                
+                if (!alreadyAsked)
+                {
+                    return "I'd be happy to check your application status! Could you please provide your Saudi National ID number? " +
+                           "It's a 10-digit number. You can find it on your ID card or Iqama.";
+                }
             }
         }
 

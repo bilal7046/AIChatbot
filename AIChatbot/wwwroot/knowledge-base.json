@@ -79,12 +79,12 @@
   ],
   "status": [
     {
-      "keywords": ["status", "check", "track", "where is", "progress", "update", "application status", "request status", "order", "order number", "request number", "application number", "req", "app"],
+      "keywords": ["status", "check", "track", "where is", "progress", "update", "application status", "request status", "my application", "my request"],
       "responses": [
-        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates. If you have an order number, please provide it and I can check the status for you.",
-        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS. Please provide your order number (e.g., REQ-123456) and I can look it up for you.",
-        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates. If you have your order or request number, share it with me and I'll check the status immediately.",
-        "Check your Absher request status by: Logging in → Navigating to 'My Services' → Finding your request in the list → Viewing details. The system shows real-time status and any required actions. SMS notifications are sent for important updates. You can also provide your order number here and I'll check it for you."
+        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates. Please provide your Saudi National ID number and I can check the status for you.",
+        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS. Please provide your 10-digit Saudi National ID number and I can look up your application status.",
+        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates. Share your ID number with me and I'll check the status immediately.",
+        "Check your Absher request status by: Logging in → Navigating to 'My Services' → Finding your request in the list → Viewing details. The system shows real-time status and any required actions. SMS notifications are sent for important updates. You can also provide your ID number here and I'll check it for you."
       ]
     },
     {
