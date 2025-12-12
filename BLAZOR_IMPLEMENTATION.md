@@ -245,3 +245,5 @@ Both versions provide the same user experience, but the Blazor version offers be
 **Version:** 1.0.0  
 **Last Updated:** December 2024
 
+
+

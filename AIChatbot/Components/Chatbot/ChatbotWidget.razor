@@ -615,18 +615,385 @@
         cursor: not-allowed;
     }
 
-    @@media (max-width: 480px) {
+    /* Touch-friendly adjustments for mobile devices */
+    @@media (hover: none) and (pointer: coarse) and (min-width: 481px) {
+        .jmm-voice-button {
+            min-width: 36px;
+            min-height: 36px;
+        }
+        
+        .jmm-widget-close,
+        .jmm-back-button {
+            min-width: 32px;
+            min-height: 32px;
+        }
+    }
+
+    /* Mobile Responsive Styles */
+    @@media (max-width: 768px) {
+        .jmm-widget-container.position-bottom-right {
+            bottom: 16px;
+            right: 16px;
+        }
+
+        .jmm-widget-container.position-bottom-left {
+            bottom: 16px;
+            left: 16px;
+        }
+
+        .jmm-widget-container.position-top-right {
+            top: 16px;
+            right: 16px;
+        }
+
+        .jmm-widget-container.position-top-left {
+            top: 16px;
+            left: 16px;
+        }
+
+        .jmm-widget-button {
+            width: 56px;
+            height: 56px;
+        }
+
         .jmm-widget-chat {
-            width: calc(100vw - 40px);
+            width: calc(100vw - 32px);
+            max-width: 400px;
             height: calc(100vh - 100px);
+            max-height: 600px;
+            border-radius: 20px;
+        }
+
+        .position-bottom-right .jmm-widget-chat {
             bottom: 80px;
-            right: 20px;
-            left: 20px;
+            right: 0;
+            left: auto;
+            top: auto;
+        }
+
+        .position-bottom-left .jmm-widget-chat {
+            bottom: 80px;
+            left: 0;
+            right: auto;
+            top: auto;
+        }
+
+        .position-top-right .jmm-widget-chat {
+            top: 80px;
+            right: 0;
+            left: auto;
+            bottom: auto;
+        }
+
+        .position-top-left .jmm-widget-chat {
+            top: 80px;
+            left: 0;
+            right: auto;
+            bottom: auto;
+        }
+
+        .jmm-widget-header {
+            padding: 16px 20px;
+        }
+
+            .jmm-widget-header h3 {
+                font-size: 18px;
+            }
+
+        .jmm-widget-messages {
+            padding: 16px;
+        }
+
+        .jmm-message {
+            margin-bottom: 16px;
+        }
+
+        .jmm-message-content {
+            max-width: 85%;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+        .jmm-widget-input-container {
+            padding: 16px;
+            gap: 8px;
+        }
+
+        .jmm-input-wrapper {
+            padding: 8px 12px;
+        }
+
+        .jmm-widget-input {
+            font-size: 16px; /* Prevents zoom on iOS */
+            padding: 4px 6px;
+        }
+
+        .jmm-voice-button {
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+        }
+
+        .jmm-send-button {
+            width: 44px;
+            height: 44px;
         }
 
         .jmm-service-button {
             font-size: 14px;
+            padding: 14px 18px;
+            gap: 12px;
+        }
+
+            .jmm-service-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+        .jmm-service-options {
             padding: 12px 16px;
+            gap: 10px;
+        }
+
+        .jmm-url-input-section {
+            margin-top: 16px;
+            padding-top: 16px;
+        }
+
+        .jmm-url-input {
+            font-size: 16px; /* Prevents zoom on iOS */
+            padding: 10px 14px;
+        }
+
+        .jmm-load-url-button {
+            width: 44px;
+            height: 44px;
+        }
+
+        .jmm-back-to-menu-button {
+            font-size: 13px;
+            padding: 10px 16px;
+        }
+
+        .jmm-listening-indicator {
+            padding: 12px 16px;
+            font-size: 13px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .jmm-widget-container.position-bottom-right {
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .jmm-widget-container.position-bottom-left {
+            bottom: 12px;
+            left: 12px;
+        }
+
+        .jmm-widget-container.position-top-right {
+            top: 12px;
+            right: 12px;
+        }
+
+        .jmm-widget-container.position-top-left {
+            top: 12px;
+            left: 12px;
+        }
+
+        .jmm-widget-button {
+            width: 52px;
+            height: 52px;
+        }
+
+        .jmm-widget-chat {
+            width: calc(100vw - 24px);
+            max-width: calc(100vw - 24px);
+            height: calc(100vh - 90px);
+            max-height: 550px;
+            border-radius: 16px;
+        }
+
+        .position-bottom-right .jmm-widget-chat {
+            bottom: 70px;
+            right: 0;
+            left: auto;
+            top: auto;
+        }
+
+        .position-bottom-left .jmm-widget-chat {
+            bottom: 70px;
+            left: 0;
+            right: auto;
+            top: auto;
+        }
+
+        .position-top-right .jmm-widget-chat {
+            top: 70px;
+            right: 0;
+            left: auto;
+            bottom: auto;
+        }
+
+        .position-top-left .jmm-widget-chat {
+            top: 70px;
+            left: 0;
+            right: auto;
+            bottom: auto;
+        }
+
+        .jmm-widget-header {
+            padding: 14px 16px;
+        }
+
+            .jmm-widget-header h3 {
+                font-size: 16px;
+            }
+
+        .jmm-widget-close {
+            width: 28px;
+            height: 28px;
+            font-size: 24px;
+        }
+
+        .jmm-back-button {
+            width: 28px;
+            height: 28px;
+            font-size: 18px;
+        }
+
+        .jmm-widget-messages {
+            padding: 12px;
+        }
+
+        .jmm-message {
+            margin-bottom: 12px;
+        }
+
+        .jmm-message-content {
+            max-width: 90%;
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+
+        .jmm-widget-input-container {
+            padding: 12px;
+            gap: 6px;
+        }
+
+        .jmm-input-wrapper {
+            padding: 6px 10px;
+        }
+
+        .jmm-widget-input {
+            font-size: 16px; /* Prevents zoom on iOS */
+            padding: 4px 4px;
+        }
+
+        .jmm-voice-button {
+            width: 28px;
+            height: 28px;
+            padding: 3px;
+        }
+
+            .jmm-voice-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+        .jmm-send-button {
+            width: 40px;
+            height: 40px;
+        }
+
+            .jmm-send-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+        .jmm-service-button {
+            font-size: 13px;
+            padding: 12px 16px;
+            gap: 10px;
+        }
+
+            .jmm-service-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+        .jmm-service-options {
+            padding: 10px 12px;
+            gap: 8px;
+        }
+
+        .jmm-url-input-section {
+            margin-top: 12px;
+            padding-top: 12px;
+        }
+
+        .jmm-url-label {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .jmm-url-input {
+            font-size: 16px; /* Prevents zoom on iOS */
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .jmm-load-url-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+            .jmm-load-url-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+        .jmm-back-to-menu-button {
+            font-size: 12px;
+            padding: 10px 14px;
+            gap: 8px;
+        }
+
+            .jmm-back-to-menu-button svg {
+                width: 14px;
+                height: 14px;
+            }
+
+        .jmm-listening-indicator {
+            padding: 10px 12px;
+            font-size: 12px;
+            gap: 10px;
+        }
+
+        .jmm-pulse {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    /* Landscape mobile orientation */
+    @@media (max-width: 768px) and (orientation: landscape) {
+        .jmm-widget-chat {
+            height: calc(100vh - 100px);
+            max-height: 500px;
+        }
+
+        .jmm-widget-messages {
+            padding: 12px;
+        }
+    }
+
+    @@media (max-width: 480px) and (orientation: landscape) {
+        .jmm-widget-chat {
+            height: calc(100vh - 90px);
+            max-height: 400px;
         }
     }
 
