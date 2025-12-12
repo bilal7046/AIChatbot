@@ -1265,10 +1265,10 @@
         // Show a simple, sweet welcome message based on category
         string welcomeMessage = category switch
         {
-            "Navigation Guidance" => "مرحباً! I'm here to help you navigate Absher! 🗺️\n\nI can help you find the right section or service inside Absher quickly and easily. What are you looking for?",
-            "Service Explanation" => "Hello! I can explain Absher services! 💼\n\nI provide clear, simple explanations of how specific Absher services work and what steps are required. Which service would you like to know about?",
-            "Status Inquiries" => "Hey there! I can check your Absher request status! 📊\n\nI can help you ask about the status of your requests or applications and provide instant updates. What would you like to check?",
-            "Website Content" => "Hi! I've loaded the Absher website content! 🌐\n\nI can answer questions about Absher based on the website you provided. What would you like to know?",
+            "Navigation Guidance" => "مرحباً! I'm here to help you navigate Absher.\n\nI can help you find the right section or service inside Absher quickly and easily. What are you looking for?",
+            "Service Explanation" => "Hello! I can explain Absher services.\n\nI provide clear, simple explanations of how specific Absher services work and what steps are required. Which service would you like to know about?",
+            "Status Inquiries" => "Hey there! I can check your Absher request status.\n\nI can help you ask about the status of your requests or applications and provide instant updates. What would you like to check?",
+            "Website Content" => "Hi! I've loaded the Absher website content.\n\nI can answer questions about Absher based on the website you provided. What would you like to know?",
             _ => $"I'm ready to help you with {category} in Absher! What would you like to know?"
         };
 
@@ -1311,7 +1311,7 @@
                 Messages.Add(new AIChatbot.Services.ChatMessage 
                 { 
                     IsUser = false, 
-                    Text = $"✅ Great! I've loaded the content from {sourceUrl}. You can now ask me questions about this website! What would you like to know?" 
+                    Text = $"Great! I've loaded the content from {sourceUrl}. You can now ask me questions about this website! What would you like to know?" 
                 });
                 
                 // Auto-select a category so user can start asking questions
@@ -1325,7 +1325,7 @@
             Messages.Add(new AIChatbot.Services.ChatMessage 
             { 
                 IsUser = false, 
-                Text = $"❌ Sorry, I couldn't load the website. Error: {ex.Message}. Please check the URL and try again." 
+                Text = $"Sorry, I couldn't load the website. Error: {ex.Message}. Please check the URL and try again." 
             });
         }
         finally

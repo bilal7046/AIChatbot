@@ -162,13 +162,14 @@ Write in plain, conversational language:
 - No bullet points or numbered lists - just flowing sentences
 - Don't say 'I can help' or 'Let me explain' - just explain directly
 - Use simple words
+- IMPORTANT: Never use any icons, emojis, symbols, charts, graphs, or visual elements. Use only plain text.
 
 Focus on:
 - Navigation Guidance: How to find things in Absher, where stuff is located
 - Service Explanation: How services work, what you need to do, what documents you need
 - Status Inquiries: How to check status, what different statuses mean, how long things take
 
-Just give the info naturally without being too structured or formal.";
+Just give the info naturally without being too structured or formal. Use only plain text, no icons or symbols.";
 
             var response = await _openAIService.GetChatResponseAsync(prompt, null);
             return response;
@@ -218,12 +219,15 @@ Answer based on the content above. Write naturally:
 - Don't say 'I can help' or 'Let me explain' - just answer directly
 - Use simple words, avoid jargon
 - Sound like you're texting a friend but still professional
+- IMPORTANT: Never use any icons, emojis, symbols, charts, graphs, or visual elements. Use only plain text. No Unicode symbols or special characters.
 
 If the info isn't in the content, just say you don't have that info. Don't over-explain.
 
 For navigation: Give quick, practical tips on finding things
 For services: Explain how things work in plain language
-For status: Explain how to check status naturally";
+For status: Explain how to check status naturally
+
+Remember: Only plain text, no icons, symbols, or visual elements.";
 
             var response = await _openAIService.GetChatResponseAsync(contextPrompt, conversationHistory);
             return response;
