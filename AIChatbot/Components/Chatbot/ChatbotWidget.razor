@@ -237,6 +237,7 @@
         line-height: 1.5;
         font-size: 15px;
         position: relative;
+        white-space: pre-line;
     }
 
     .jmm-message-user .jmm-message-content {
@@ -1096,27 +1097,69 @@
             }
             else
             {
-                <div class="jmm-message jmm-message-bot">
-                    <div class="jmm-message-content">
-                        <strong>@SelectedCategory</strong><br/>
-                        How can I help you with @SelectedCategory?.ToLower() in Absher? Ask me any questions!
+                @if (SelectedCategory == "Service Explanation" && ShowServiceOptions)
+                {
+                    <div class="jmm-service-options">
+                        <button class="jmm-service-button" @onclick="@(() => SelectService("Marriage with Foreigner"))" style="background: @PrimaryColor">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>Marriage with Foreigner</span>
+                        </button>
+                        <button class="jmm-service-button" @onclick="@(() => SelectService("Travel in Banned Countries"))" style="background: @PrimaryColor">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Travel in Banned Countries</span>
+                        </button>
                     </div>
-                </div>
-                
-                <div class="jmm-back-to-menu-button-container">
-                    <button class="jmm-back-to-menu-button" @onclick="BackToMenu" style="border-color: @PrimaryColor; color: @PrimaryColor">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
-                        </svg>
-                        <span>Back to Main Menu</span>
-                    </button>
-                </div>
+                    
+                    <div class="jmm-back-to-menu-button-container">
+                        <button class="jmm-back-to-menu-button" @onclick="BackToMenu" style="border-color: @PrimaryColor; color: @PrimaryColor">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            <span>Back to Main Menu</span>
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <div class="jmm-message jmm-message-bot">
+                        <div class="jmm-message-content">
+                            <strong>@SelectedCategory</strong><br/>
+                            How can I help you with @SelectedCategory?.ToLower() in Absher? Ask me any questions!
+                        </div>
+                    </div>
+                    
+                    <div class="jmm-back-to-menu-button-container">
+                        <button class="jmm-back-to-menu-button" @onclick="BackToMenu" style="border-color: @PrimaryColor; color: @PrimaryColor">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            <span>Back to Main Menu</span>
+                        </button>
+                    </div>
+                }
             }
             
             @foreach (var message in Messages)
             {
                 <div class="jmm-message jmm-message-@(message.IsUser ? "user" : "bot")">
-                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "")">@message.Text</div>
+                    <div class="jmm-message-content" style="@(message.IsUser ? $"background: {PrimaryColor};" : "") white-space: pre-line;">
+                        @if (message.IsUser)
+                        {
+                            @message.Text
+                        }
+                        else
+                        {
+                            @message.Text
+                        }
+                    </div>
                 </div>
             }
             
@@ -1134,7 +1177,7 @@
             }
         </div>
         
-        @if (CategorySelected)
+        @if (CategorySelected && !ShowServiceOptions)
         {
             <div class="jmm-widget-input-container">
                 <div class="jmm-input-wrapper">
@@ -1186,6 +1229,8 @@
     private bool IsLoadingUrl { get; set; } = false;
     private bool CategorySelected { get; set; } = false;
     private string? SelectedCategory { get; set; }
+    private bool ShowServiceOptions { get; set; } = false;
+    private string? SelectedService { get; set; }
     private string inputText = string.Empty;
     private string websiteUrl = string.Empty;
     private List<AIChatbot.Services.ChatMessage> Messages { get; set; } = new();
@@ -1248,6 +1293,8 @@
     {
         CategorySelected = false;
         SelectedCategory = null;
+        ShowServiceOptions = false;
+        SelectedService = null;
         Messages.Clear();
         inputText = string.Empty;
         IsListening = false;
@@ -1259,6 +1306,19 @@
     {
         SelectedCategory = category;
         CategorySelected = true;
+        
+        // For Service Explanation, show service options
+        if (category == "Service Explanation")
+        {
+            ShowServiceOptions = true;
+            SelectedService = null;
+            Messages.Clear();
+        }
+        else
+        {
+            ShowServiceOptions = false;
+        }
+        
         StateHasChanged();
         await ScrollToBottom();
 
@@ -1266,13 +1326,33 @@
         string welcomeMessage = category switch
         {
             "Navigation Guidance" => "مرحباً! I'm here to help you navigate Absher.\n\nI can help you find the right section or service inside Absher quickly and easily. What are you looking for?",
-            "Service Explanation" => "Hello! I can explain Absher services.\n\nI provide clear, simple explanations of how specific Absher services work and what steps are required. Which service would you like to know about?",
+            "Service Explanation" => "Hello! I can explain Absher services.\n\nPlease select which service you would like to know about:",
             "Status Inquiries" => "Hey there! I can check your Absher request status.\n\nI can help you ask about the status of your requests or applications and provide instant updates. What would you like to check?",
             "Website Content" => "Hi! I've loaded the Absher website content.\n\nI can answer questions about Absher based on the website you provided. What would you like to know?",
             _ => $"I'm ready to help you with {category} in Absher! What would you like to know?"
         };
 
         Messages.Add(new AIChatbot.Services.ChatMessage { IsUser = false, Text = welcomeMessage });
+        StateHasChanged();
+        await ScrollToBottom();
+    }
+
+    private async Task SelectService(string serviceName)
+    {
+        SelectedService = serviceName;
+        ShowServiceOptions = false;
+        StateHasChanged();
+        await ScrollToBottom();
+
+        // Get service explanation
+        var serviceMessage = serviceName switch
+        {
+            "Marriage with Foreigner" => "Marriage with Foreigner service allows Saudi citizens to apply for permission to marry a foreigner. The process involves submitting required documents including identification, proof of relationship, and other necessary paperwork through Absher. You'll need to log in to your Absher account, navigate to Civil Affairs services, select the Marriage with Foreigner service, fill out the application form, upload all required documents, and submit your request. The processing time for this service is 1 to 3 business days. You'll receive notifications about your application status via SMS and can track it in your Absher account.",
+            "Travel in Banned Countries" => "Travel in Banned Countries service allows you to request permission to travel to countries that are typically restricted for Saudi citizens. To use this service, log in to your Absher account, go to the appropriate section (usually under Civil Affairs or Travel Services), select the Travel in Banned Countries service, complete the application form with your travel details and reason, upload required documents such as your passport and travel itinerary, and submit your request. The processing time for this service is 1 to 3 business days. You'll be notified of the decision via SMS and can check the status in your Absher account.",
+            _ => $"Information about {serviceName} service."
+        };
+
+        Messages.Add(new AIChatbot.Services.ChatMessage { IsUser = false, Text = serviceMessage });
         StateHasChanged();
         await ScrollToBottom();
     }
@@ -1338,7 +1418,7 @@
 
     private async Task SendMessage()
     {
-        if (string.IsNullOrWhiteSpace(inputText) || IsLoading || !CategorySelected)
+        if (string.IsNullOrWhiteSpace(inputText) || IsLoading || !CategorySelected || ShowServiceOptions)
             return;
 
         var userMessage = inputText.Trim();
@@ -1351,7 +1431,12 @@
 
         try
         {
-            var response = await ChatService.ProcessMessageAsync(userMessage, Messages, SelectedCategory);
+            // If a specific service is selected, include it in the message context
+            var messageToProcess = !string.IsNullOrWhiteSpace(SelectedService) 
+                ? $"{SelectedService}: {userMessage}"
+                : userMessage;
+            
+            var response = await ChatService.ProcessMessageAsync(messageToProcess, Messages, SelectedCategory);
             Messages.Add(new AIChatbot.Services.ChatMessage { IsUser = false, Text = response });
         }
         catch

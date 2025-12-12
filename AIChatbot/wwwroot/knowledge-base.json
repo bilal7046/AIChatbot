@@ -1,6 +1,22 @@
 {
   "navigation": [
     {
+      "keywords": ["renew driving license", "renew license", "driving license renewal", "license renewal", "renew my license", "how to renew driving license", "licence number", "license number", "driving license number", "licence"],
+      "responses": [
+        "To find your driving license number or renew your license in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Traffic Services' (المرور)\n- Select 'Driving License Services'\n- Here you can view your license details including your license number\n- To renew, choose 'License Renewal' from the available options\n- Follow the on-screen instructions to complete the process",
+        "Here's how to find your license number or navigate to license services:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Traffic Services' (المرور) in the main navigation menu\n- Click on it to open the Traffic Services section\n- Find and click on 'Driving License Services'\n- Your license number and details will be displayed here\n- You can also select 'License Renewal' if you need to renew",
+        "To find your driving license number:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Traffic Services' (المرور)\n- In the Traffic Services section, click 'Driving License Services'\n- Your license information including the license number will be shown here\n- You can also access renewal services from this section"
+      ]
+    },
+    {
+      "keywords": ["renew id", "renew national id", "id renewal", "renew my id", "how to renew id", "national id renewal", "where to renew id"],
+      "responses": [
+        "To renew your National ID in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Civil Affairs' (الأحوال المدنية)\n- Select 'ID Services' from the menu\n- Choose 'Renew ID' option\n- Complete the renewal form and submit your request",
+        "Here's how to navigate to ID renewal:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Civil Affairs' (الأحوال المدنية) in the main navigation menu\n- Click on it to open the Civil Affairs section\n- Find and click on 'ID Services'\n- Select 'Renew ID'\n- Follow the instructions to complete the renewal process",
+        "To find the ID renewal service:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Civil Affairs' (الأحوال المدنية)\n- In the Civil Affairs section, click 'ID Services'\n- Choose 'Renew ID' option\n- Fill out the required information and proceed with the renewal"
+      ]
+    },
+    {
       "keywords": ["where", "find", "navigate", "section", "service", "menu", "how to find", "where is", "location", "page"],
       "responses": [
         "To find a service in Absher, you can use the main menu at the top of the page. Services are organized by categories like Civil Affairs, Traffic, Labor, and more. You can also use the search bar to quickly find what you're looking for.",
@@ -11,7 +27,7 @@
       ]
     },
     {
-      "keywords": ["civil affairs", "أحوال مدنية", "family", "id", "passport", "birth certificate", "marriage"],
+      "keywords": ["civil affairs", "أحوال مدنية", "family", "birth certificate", "marriage", "where is civil affairs", "find civil affairs"],
       "responses": [
         "Civil Affairs services (الأحوال المدنية) in Absher include: ID card services, passport services, family registry, birth certificates, marriage certificates, and more. You can find these under the 'Civil Affairs' section in the main menu.",
         "For Civil Affairs services, navigate to the 'Civil Affairs' (الأحوال المدنية) section in Absher. Here you can access services related to national ID, passports, family documents, and civil status certificates.",
@@ -19,11 +35,19 @@
       ]
     },
     {
-      "keywords": ["traffic", "مرور", "driving license", "vehicle", "car", "license", "driving"],
+      "keywords": ["traffic", "مرور", "vehicle", "car", "driving"],
       "responses": [
         "Traffic services (المرور) in Absher include: driving license services, vehicle registration, traffic violations, license renewal, and vehicle ownership transfer. Find these under the 'Traffic Services' section.",
         "For traffic-related services, go to the 'Traffic Services' (المرور) section in Absher. Here you can manage your driving license, vehicle registration, check violations, and more.",
         "Traffic services are available in Absher under the 'Traffic Services' (المرور) menu. This includes all services related to vehicles and driving licenses."
+      ]
+    },
+    {
+      "keywords": ["licence number", "license number", "driving license number", "my license number", "where is my license number", "find license number"],
+      "responses": [
+        "To find your driving license number in Absher, follow these steps:\n- Log in to your Absher account at www.absher.sa\n- Go to the main menu at the top of the page\n- Click on 'Traffic Services' (المرور)\n- Select 'Driving License Services'\n- Your license details including the license number will be displayed here",
+        "Here's how to find your license number:\n- Visit www.absher.sa and sign in to your account\n- Look for 'Traffic Services' (المرور) in the main navigation menu\n- Click on it to open the Traffic Services section\n- Find and click on 'Driving License Services'\n- Your license number and all license information will be shown on this page",
+        "To view your driving license number:\n- Go to the Absher website (www.absher.sa)\n- Log in with your credentials\n- Navigate to the top menu and click 'Traffic Services' (المرور)\n- In the Traffic Services section, click 'Driving License Services'\n- Your complete license information including the license number will be displayed"
       ]
     },
     {
@@ -37,9 +61,25 @@
   ],
   "services": [
     {
+      "keywords": ["marriage with foreigner", "marriage foreigner", "marry foreigner", "foreign marriage", "marriage permission"],
+      "responses": [
+        "Marriage with Foreigner service allows Saudi citizens to apply for permission to marry a foreigner. The process involves submitting required documents including identification, proof of relationship, and other necessary paperwork through Absher. You'll need to log in to your Absher account, navigate to Civil Affairs services, select the Marriage with Foreigner service, fill out the application form, upload all required documents, and submit your request. The processing time for this service is 1 to 3 business days. You'll receive notifications about your application status via SMS and can track it in your Absher account.",
+        "To apply for Marriage with Foreigner permission: Log in to Absher, go to Civil Affairs services, select Marriage with Foreigner, complete the application with your details and your partner's information, upload required documents like identification and proof of relationship, submit the application. Processing takes 1 to 3 business days. You'll be notified via SMS when your application is reviewed.",
+        "Marriage with Foreigner service requires you to log in to Absher, access Civil Affairs section, choose the Marriage with Foreigner option, fill in all required information about yourself and your foreign partner, attach necessary documents, and submit. The application will be processed within 1 to 3 business days, and you'll receive updates via SMS."
+      ]
+    },
+    {
+      "keywords": ["travel in banned countries", "travel banned countries", "banned countries travel", "travel permission", "travel ban", "banned country"],
+      "responses": [
+        "Travel in Banned Countries service allows you to request permission to travel to countries that are typically restricted for Saudi citizens. To use this service, log in to your Absher account, go to the appropriate section (usually under Civil Affairs or Travel Services), select the Travel in Banned Countries service, complete the application form with your travel details and reason, upload required documents such as your passport and travel itinerary, and submit your request. The processing time for this service is 1 to 3 business days. You'll be notified of the decision via SMS and can check the status in your Absher account.",
+        "To request travel permission to banned countries: Log in to Absher, navigate to Travel Services or Civil Affairs, select Travel in Banned Countries service, provide your travel destination, dates, and reason for travel, upload your passport copy and travel itinerary, submit the application. Processing takes 1 to 3 business days. You'll receive an SMS notification with the decision.",
+        "Travel in Banned Countries service requires logging into Absher, finding the Travel Services section, selecting Travel in Banned Countries, entering your destination country and travel dates, explaining your reason for travel, uploading passport and itinerary documents, then submitting. The application is processed within 1 to 3 business days, and you'll get notified via SMS."
+      ]
+    },
+    {
       "keywords": ["how", "explain", "what is", "what are", "how does", "how to", "steps", "process", "procedure", "guide"],
       "responses": [
-        "I can explain how Absher services work! Each service has specific steps and requirements. Could you tell me which specific service you'd like me to explain? For example: ID renewal, passport application, work permit, etc.",
+        "I can explain how Absher services work! Each service has specific steps and requirements. Could you tell me which specific service you'd like me to explain? For example: Marriage with Foreigner, Travel in Banned Countries, etc.",
         "I'm here to provide clear explanations of Absher services. Each service follows a specific process with required documents and steps. What service would you like me to explain?",
         "I can walk you through how any Absher service works. Services typically require: logging in, selecting the service, providing required information, uploading documents if needed, and submitting. Which service are you interested in?"
       ]
@@ -79,12 +119,12 @@
   ],
   "status": [
     {
-      "keywords": ["status", "check", "track", "where is", "progress", "update", "application status", "request status", "order", "order number", "request number", "application number", "req", "app"],
+      "keywords": ["status", "check", "track", "where is", "progress", "update", "application status", "request status", "my application", "my request"],
       "responses": [
-        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates. If you have an order number, please provide it and I can check the status for you.",
-        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS. Please provide your order number (e.g., REQ-123456) and I can look it up for you.",
-        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates. If you have your order or request number, share it with me and I'll check the status immediately.",
-        "Check your Absher request status by: Logging in → Navigating to 'My Services' → Finding your request in the list → Viewing details. The system shows real-time status and any required actions. SMS notifications are sent for important updates. You can also provide your order number here and I'll check it for you."
+        "To check your request status in Absher: 1) Log in to your Absher account, 2) Go to 'My Services' or 'My Requests' section, 3) Find your application/request, 4) Click on it to see detailed status. You can also receive SMS notifications about status updates. Please provide your Saudi National ID number and I can check the status for you.",
+        "You can check the status of any Absher request by logging in and going to the 'My Services' section. All your submitted applications and requests are listed there with their current status. Status updates are also sent via SMS. Please provide your 10-digit Saudi National ID number and I can look up your application status.",
+        "To track your application: Log in to Absher → My Services/My Requests → Find your application → View status. Statuses typically include: Submitted, Under Review, Approved, Rejected, or Completed. You'll receive notifications for updates. Share your ID number with me and I'll check the status immediately.",
+        "Check your Absher request status by: Logging in → Navigating to 'My Services' → Finding your request in the list → Viewing details. The system shows real-time status and any required actions. SMS notifications are sent for important updates. You can also provide your ID number here and I'll check it for you."
       ]
     },
     {
