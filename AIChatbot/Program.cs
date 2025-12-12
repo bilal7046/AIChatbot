@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddHttpClient<OpenAIService>();
 builder.Services.AddHttpClient<DocumentService>();
 builder.Services.AddSingleton<KnowledgeBaseService>();
+builder.Services.AddSingleton<OrderStatusService>();
 builder.Services.AddScoped<ChatService>();
 
 var app = builder.Build();
